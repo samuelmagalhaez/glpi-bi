@@ -1,0 +1,209 @@
+interface FastEthernet0/1
+ description AP_241_01
+ switchport trunk native vlan 10
+ switchport mode trunk
+ spanning-tree portfast
+!
+interface FastEthernet0/2
+ description AP_241_02
+ switchport trunk native vlan 10
+ switchport mode trunk
+ spanning-tree portfast
+!
+interface FastEthernet0/3
+ description AP_241_03
+ switchport trunk native vlan 10
+ switchport mode trunk
+ spanning-tree portfast
+!
+interface FastEthernet0/4
+ description REP
+ switchport access vlan 12
+ switchport mode access
+ spanning-tree portfast
+ 
+interface FastEthernet0/5
+ description DVR
+ switchport access vlan 12
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/6
+ description Alarme
+ switchport access vlan 12
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/7
+ description Impressora Connect
+ switchport access vlan 12
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/8
+ description Impressora PV
+ switchport access vlan 12
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/9
+ description Impressora MB
+ switchport access vlan 12
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/10
+ description Impressora Credito
+ switchport access vlan 12
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/11
+ description Micro Credito
+ switchport access vlan 12
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/12
+ description Micro GR
+ switchport access vlan 12
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/13
+ description PDV
+ switchport access vlan 11
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/14
+ description PDV
+ switchport access vlan 11
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/15
+ description PDV
+ switchport access vlan 11
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/16
+ description PDV
+ switchport access vlan 11
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/17
+ description PDV
+ switchport access vlan 11
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/18
+ description PDV
+ switchport access vlan 11
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/19
+ description PDV
+ switchport access vlan 11
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/20
+ description PDV
+ switchport access vlan 11
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/21
+ description PDV
+ switchport access vlan 11
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/22
+ description PDV
+ switchport access vlan 11
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/23
+ description RETAGUARDA
+ switchport access vlan 12
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/24
+ description RETAGUARDA
+ switchport access vlan 12
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/25
+!
+interface FastEthernet0/26
+!
+interface FastEthernet0/27
+!
+interface FastEthernet0/28
+!
+interface FastEthernet0/29
+!
+interface FastEthernet0/30
+!
+interface FastEthernet0/31
+!
+interface FastEthernet0/32
+!
+interface FastEthernet0/33
+!
+interface FastEthernet0/34
+!
+interface FastEthernet0/35
+!
+interface FastEthernet0/36
+!
+interface FastEthernet0/37
+!
+interface FastEthernet0/38
+!
+interface FastEthernet0/39
+!
+interface FastEthernet0/40
+!
+interface FastEthernet0/41
+!
+interface FastEthernet0/42
+!
+interface FastEthernet0/43
+!
+interface FastEthernet0/44
+!
+interface FastEthernet0/45
+!
+interface FastEthernet0/46
+!
+interface FastEthernet0/47
+!
+interface FastEthernet0/48
+!
+interface GigabitEthernet0/1
+ description link OI
+ switchport mode trunk
+!
+interface GigabitEthernet0/2
+ description link WCS
+ switchport mode trunk
+!
+interface Vlan1
+ ip address 172.16.41.32 255.255.255.0
+ no ip route-cache
+!
+interface Vlan10
+ description GERENCIA
+ ip address 10.2.41.5 255.255.255.0
+ no ip route-cache
+!

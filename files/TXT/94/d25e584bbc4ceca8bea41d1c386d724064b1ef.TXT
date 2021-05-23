@@ -1,0 +1,2638 @@
+SWT_CORE_ADM#sh run
+Building configuration...
+
+Current configuration : 69158 bytes
+!
+! Last configuration change at 16:48:46 RJO Fri Oct 16 2020 by tr0308
+! NVRAM config last updated at 16:48:59 RJO Fri Oct 16 2020 by tr0308
+!
+version 15.0
+no service pad
+service timestamps debug datetime msec localtime show-timezone
+service timestamps log datetime msec localtime show-timezone
+service password-encryption
+!
+hostname SWT_CORE_ADM
+!
+boot-start-marker
+boot-end-marker
+!
+no logging console
+enable secret 4 .k/nJCjHVBFiJ99Ph2SEzu37nNhDXhA/Eni7qI1rkZQ
+!
+username supinfra password 7 10664A48565843570924332E011760320259
+aaa new-model
+!
+!
+aaa group server tacacs+ ACS-TACACS
+ server name AAA_CeV
+!
+aaa authentication login ACS-AUTH group ACS-TACACS local
+aaa authorization console
+aaa authorization exec default local
+aaa authorization exec ACS-AUTH group ACS-TACACS local
+aaa accounting exec default start-stop group ACS-TACACS
+aaa accounting commands 15 default start-stop group ACS-TACACS
+!
+!
+!
+!
+!
+aaa session-id common
+clock timezone RJO -2 0
+switch 1 provision ws-c3750x-48
+switch 2 provision ws-c3750x-48
+switch 3 provision ws-c3750x-48
+switch 4 provision ws-c3750x-48
+system mtu routing 1500
+ip routing
+no ip arp incomplete enable
+ip dhcp excluded-address 172.21.12.1
+ip dhcp excluded-address 172.21.21.1
+ip dhcp excluded-address 172.21.22.1
+ip dhcp excluded-address 172.21.31.1
+ip dhcp excluded-address 172.21.32.1
+ip dhcp excluded-address 172.21.40.1
+ip dhcp excluded-address 172.21.22.106
+ip dhcp excluded-address 172.21.22.91
+ip dhcp excluded-address 172.21.61.1 172.21.61.9
+ip dhcp excluded-address 172.21.62.1 172.21.62.9
+ip dhcp excluded-address 172.21.253.1 172.21.253.10
+ip dhcp excluded-address 172.21.64.1 172.21.64.9
+ip dhcp excluded-address 172.21.68.1 172.21.68.9
+ip dhcp excluded-address 172.21.21.107
+ip dhcp excluded-address 172.16.224.92
+ip dhcp excluded-address 172.21.21.36
+ip dhcp excluded-address 172.21.21.192
+ip dhcp excluded-address 172.21.21.130
+ip dhcp excluded-address 172.21.22.73
+ip dhcp excluded-address 172.21.11.54
+ip dhcp excluded-address 172.21.61.200
+ip dhcp excluded-address 172.21.11.1
+ip dhcp excluded-address 172.21.72.1 172.21.72.15
+ip dhcp excluded-address 172.21.73.1 172.21.73.10
+ip dhcp excluded-address 172.21.22.254
+ip dhcp excluded-address 172.21.12.254
+ip dhcp excluded-address 172.21.23.1
+ip dhcp excluded-address 172.21.24.1
+ip dhcp excluded-address 172.21.25.1
+ip dhcp excluded-address 172.21.10.0 172.21.10.20
+ip dhcp excluded-address 172.21.75.10
+ip dhcp excluded-address 10.24.5.31 10.24.5.36
+ip dhcp excluded-address 10.24.5.126 10.24.5.254
+ip dhcp excluded-address 10.24.5.50 10.24.5.55
+ip dhcp excluded-address 10.34.5.31 10.34.5.36
+ip dhcp excluded-address 10.34.5.126 10.34.5.254
+ip dhcp excluded-address 10.44.5.31 10.44.5.63
+ip dhcp excluded-address 10.44.5.64 10.44.5.68
+ip dhcp excluded-address 10.44.5.97 10.44.5.123
+ip dhcp excluded-address 10.24.5.15
+ip dhcp excluded-address 10.24.5.21
+ip dhcp excluded-address 10.24.5.85
+ip dhcp excluded-address 10.24.5.100
+ip dhcp excluded-address 10.24.5.101
+ip dhcp excluded-address 10.24.5.201
+ip dhcp excluded-address 10.24.5.150
+ip dhcp excluded-address 10.24.5.151
+ip dhcp excluded-address 10.24.5.254
+ip dhcp excluded-address 10.22.90.31 10.22.90.36
+ip dhcp excluded-address 10.22.90.126 10.22.90.254
+ip dhcp excluded-address 10.22.90.50 10.22.90.55
+ip dhcp excluded-address 10.32.90.31 10.32.90.36
+ip dhcp excluded-address 10.32.90.126 10.32.90.254
+ip dhcp excluded-address 10.42.90.31 10.42.90.63
+ip dhcp excluded-address 10.42.90.64 10.42.90.68
+ip dhcp excluded-address 10.42.90.97 10.42.90.123
+ip dhcp excluded-address 10.22.90.15
+ip dhcp excluded-address 10.22.90.21
+ip dhcp excluded-address 10.22.90.85
+ip dhcp excluded-address 10.22.90.100
+ip dhcp excluded-address 10.22.90.101
+ip dhcp excluded-address 10.22.90.201
+ip dhcp excluded-address 10.22.90.150
+ip dhcp excluded-address 10.22.90.151
+ip dhcp excluded-address 10.22.90.254
+ip dhcp excluded-address 10.24.8.31 10.24.8.36
+ip dhcp excluded-address 10.24.8.126 10.24.8.254
+ip dhcp excluded-address 10.24.8.50 10.24.8.55
+ip dhcp excluded-address 10.34.8.31 10.34.8.36
+ip dhcp excluded-address 10.34.8.126 10.34.8.254
+ip dhcp excluded-address 10.44.8.31 10.44.8.63
+ip dhcp excluded-address 10.44.8.64 10.44.8.68
+ip dhcp excluded-address 10.44.8.97 10.44.8.123
+ip dhcp excluded-address 10.24.8.15
+ip dhcp excluded-address 10.24.8.21
+ip dhcp excluded-address 10.24.8.85
+ip dhcp excluded-address 10.24.8.100
+ip dhcp excluded-address 10.24.8.101
+ip dhcp excluded-address 10.24.8.201
+ip dhcp excluded-address 10.24.8.150
+ip dhcp excluded-address 10.24.8.151
+ip dhcp excluded-address 10.24.8.254
+ip dhcp excluded-address 172.21.25.250
+ip dhcp excluded-address 10.24.22.31 10.24.22.36
+ip dhcp excluded-address 10.24.22.126 10.24.22.254
+ip dhcp excluded-address 10.24.22.50 10.24.22.55
+ip dhcp excluded-address 10.34.22.31 10.34.22.36
+ip dhcp excluded-address 10.34.22.126 10.34.22.254
+ip dhcp excluded-address 10.44.22.31 10.44.22.63
+ip dhcp excluded-address 10.44.22.64 10.44.22.68
+ip dhcp excluded-address 10.44.22.97 10.44.22.123
+ip dhcp excluded-address 10.24.22.15
+ip dhcp excluded-address 10.24.22.21
+ip dhcp excluded-address 10.24.22.85
+ip dhcp excluded-address 10.24.22.100
+ip dhcp excluded-address 10.24.22.101
+ip dhcp excluded-address 10.24.22.201
+ip dhcp excluded-address 10.24.22.150
+ip dhcp excluded-address 10.24.22.151
+ip dhcp excluded-address 10.24.22.254
+ip dhcp excluded-address 10.24.23.31 10.24.23.36
+ip dhcp excluded-address 10.24.23.126 10.24.23.254
+ip dhcp excluded-address 10.24.23.50 10.24.23.55
+ip dhcp excluded-address 10.34.23.31 10.34.23.36
+ip dhcp excluded-address 10.34.23.126 10.34.23.254
+ip dhcp excluded-address 10.44.23.31 10.44.23.63
+ip dhcp excluded-address 10.44.23.64 10.44.23.68
+ip dhcp excluded-address 10.44.23.97 10.44.23.123
+ip dhcp excluded-address 10.24.23.15
+ip dhcp excluded-address 10.24.23.21
+ip dhcp excluded-address 10.24.23.85
+ip dhcp excluded-address 10.24.23.100
+ip dhcp excluded-address 10.24.23.101
+ip dhcp excluded-address 10.24.23.201
+ip dhcp excluded-address 10.24.23.150
+ip dhcp excluded-address 10.24.23.151
+ip dhcp excluded-address 10.24.23.254
+ip dhcp excluded-address 10.24.26.31 10.24.26.36
+ip dhcp excluded-address 10.24.26.126 10.24.26.254
+ip dhcp excluded-address 10.24.26.50 10.24.26.55
+ip dhcp excluded-address 10.34.26.31 10.34.26.36
+ip dhcp excluded-address 10.34.26.126 10.34.26.254
+ip dhcp excluded-address 10.44.26.31 10.44.26.63
+ip dhcp excluded-address 10.44.26.64 10.44.26.68
+ip dhcp excluded-address 10.44.26.97 10.44.26.123
+ip dhcp excluded-address 10.24.26.15
+ip dhcp excluded-address 10.24.26.21
+ip dhcp excluded-address 10.24.26.85
+ip dhcp excluded-address 10.24.26.100
+ip dhcp excluded-address 10.24.26.101
+ip dhcp excluded-address 10.24.26.201
+ip dhcp excluded-address 10.24.26.150
+ip dhcp excluded-address 10.24.26.151
+ip dhcp excluded-address 10.24.26.254
+ip dhcp excluded-address 10.24.17.31 10.24.17.36
+ip dhcp excluded-address 10.24.17.126 10.24.17.254
+ip dhcp excluded-address 10.24.17.50 10.24.17.55
+ip dhcp excluded-address 10.34.17.31 10.34.17.36
+ip dhcp excluded-address 10.34.17.126 10.34.17.254
+ip dhcp excluded-address 10.44.17.31 10.44.17.63
+ip dhcp excluded-address 10.44.17.64 10.44.17.68
+ip dhcp excluded-address 10.44.17.97 10.44.17.123
+ip dhcp excluded-address 10.24.17.15
+ip dhcp excluded-address 10.24.17.21
+ip dhcp excluded-address 10.24.17.85
+ip dhcp excluded-address 10.24.17.100
+ip dhcp excluded-address 10.24.17.101
+ip dhcp excluded-address 10.24.17.201
+ip dhcp excluded-address 10.24.17.150
+ip dhcp excluded-address 10.24.17.151
+ip dhcp excluded-address 10.24.17.254
+ip dhcp excluded-address 172.21.75.100 172.21.75.200
+ip dhcp excluded-address 172.21.77.17
+ip dhcp excluded-address 172.21.75.1 172.21.75.15
+ip dhcp excluded-address 172.21.76.1 172.21.76.50
+ip dhcp excluded-address 172.21.78.1
+!
+ip dhcp pool Vlan11
+ network 172.21.11.0 255.255.255.0
+ default-router 172.21.11.1
+ dns-server 172.21.1.252 172.21.1.251
+!
+ip dhcp pool Vlan22
+ network 172.21.22.0 255.255.255.0
+ default-router 172.21.22.1
+ dns-server 172.21.1.252 172.21.1.251
+!
+ip dhcp pool Vlan40
+ network 172.21.40.0 255.255.255.0
+ default-router 172.21.40.1
+ dns-server 172.21.1.252 172.21.1.251
+!
+ip dhcp pool Vlan253
+ network 172.21.253.0 255.255.255.0
+ default-router 172.21.253.1
+ dns-server 172.21.1.252 172.21.1.251
+!
+ip dhcp pool Vlan64
+ network 172.21.64.0 255.255.252.0
+ default-router 172.21.64.1
+ dns-server 172.21.1.252 172.21.1.251
+!
+ip dhcp pool Vlan607
+ network 172.21.62.0 255.255.254.0
+ default-router 172.21.62.1
+ dns-server 172.21.1.252 172.21.1.251
+!
+ip dhcp pool Fabiola
+ host 172.21.61.246 255.255.255.0
+ client-identifier 0174.e543.fc7f.2b
+ default-router 172.21.61.1
+!
+ip dhcp pool Gisele_Matos
+ host 172.21.32.64 255.255.255.0
+ client-identifier 0180.ee73.3392.e0
+ default-router 172.21.32.1
+!
+ip dhcp pool Maria_Colonese
+ host 172.21.11.202 255.255.255.0
+ client-identifier 0180.ee73.33a7.36
+ default-router 172.21.11.1
+!
+ip dhcp pool Mondrian
+ host 172.21.12.242 255.255.255.0
+ client-identifier 01e8.3935.1640.6e
+ default-router 172.21.12.1
+!
+ip dhcp pool Vlan608
+ network 172.21.72.0 255.255.255.0
+ default-router 172.21.72.10
+ dns-server 8.8.8.8 8.8.4.4
+!
+ip dhcp pool Vlan68
+ network 172.21.68.0 255.255.252.0
+ default-router 172.21.68.1
+ dns-server 172.21.68.2
+!
+ip dhcp pool Suporte_Alcis_1
+ host 172.21.12.54 255.255.255.0
+ client-identifier 0180.ee73.35b2.3a
+ default-router 172.21.12.1
+!
+ip dhcp pool Suporte_Alcis_2
+ host 172.21.11.148 255.255.255.0
+ client-identifier 0180.ee73.35c9.cf
+ default-router 172.21.11.1
+!
+ip dhcp pool Service_Desk_4
+ host 172.21.240.14 255.255.255.0
+ client-identifier 0180.ee73.35c0.a5
+ default-router 172.21.240.1
+ dns-server 172.21.1.252 172.21.1.251
+!
+ip dhcp pool Service_Desk_6
+ host 172.21.240.16 255.255.255.0
+ client-identifier 0180.ee73.35c3.2d
+ default-router 172.21.240.1
+ dns-server 172.21.1.252 172.21.1.251
+!
+ip dhcp pool Service_Desk_7
+ host 172.21.240.17 255.255.255.0
+ client-identifier 0180.ee73.35c6.2f
+ default-router 172.21.240.1
+ dns-server 172.21.1.252 172.21.1.251
+!
+ip dhcp pool Service_Desk_8
+ host 172.21.240.18 255.255.255.0
+ client-identifier 0180.ee73.35c1.6a
+ default-router 172.21.240.1
+ dns-server 172.21.1.252 172.21.1.251
+!
+ip dhcp pool Service_Desk_9
+ host 172.21.240.19 255.255.255.0
+ client-identifier 0180.ee73.35c0.f4
+ default-router 172.21.240.1
+ dns-server 172.21.1.252 172.21.1.251
+!
+ip dhcp pool Vlan241
+ network 172.21.241.0 255.255.255.0
+ default-router 172.21.241.1
+ dns-server 10.200.100.84 172.16.224.90
+ option 252 ascii " http://172.16.224.207:8080/proxy-cev.pac "
+!
+ip dhcp pool Monitoracao_DVR_Alex
+ host 172.21.40.74 255.255.255.0
+ client-identifier 0180.ee73.35b2.25
+ default-router 172.21.40.1
+!
+ip dhcp pool CEVAD300218
+ host 172.21.40.233 255.255.255.0
+ client-identifier 0180.ee73.35c5.98
+ default-router 172.21.40.1
+!
+ip dhcp pool vlan73
+ network 172.21.73.0 255.255.255.0
+ default-router 172.21.73.1
+ dns-server 10.200.100.84 172.16.224.90
+!
+ip dhcp pool cevad300460
+ host 172.21.12.77 255.255.255.0
+ client-identifier 0180.ee73.35c2.cd
+ default-router 172.21.12.1
+ dns-server 172.16.224.90 10.200.100.84
+!
+ip dhcp pool cevad300539
+ host 172.21.11.218 255.255.255.0
+ client-identifier 0180.ee73.35c3.87
+ default-router 172.21.11.1
+ dns-server 172.16.224.90 10.200.100.84
+!
+ip dhcp pool Field_Service
+ host 172.21.21.149 255.255.255.0
+ client-identifier 0180.ee73.35c8.3c
+ default-router 172.21.21.1
+ dns-server 172.16.224.90 10.200.100.84
+!
+ip dhcp pool CEVAD300122
+ host 172.21.22.156 255.255.255.0
+ client-identifier 0180.ee73.33a6.5e
+ default-router 172.21.22.1
+ dns-server 172.16.224.90 10.200.100.84
+!
+ip dhcp pool Denise_Alves
+ host 172.21.22.209 255.255.255.0
+ client-identifier 0180.ee73.33a7.2d
+ default-router 172.21.22.1
+ dns-server 172.16.224.90 10.200.100.84
+!
+ip dhcp pool Vlan23
+ network 172.21.23.0 255.255.255.0
+ default-router 172.21.23.1
+ dns-server 10.200.100.84 172.16.224.90
+!
+ip dhcp pool Vlan24
+ network 172.21.24.0 255.255.255.0
+ default-router 172.21.24.1
+ dns-server 10.200.100.84 172.16.224.90
+!
+ip dhcp pool Vlan25
+ network 172.21.25.0 255.255.255.0
+ default-router 172.21.25.1
+ dns-server 10.200.100.84 172.16.224.6 172.16.224.90
+!
+ip dhcp pool Gustavo_Avelar
+ host 172.21.61.34 255.255.255.0
+ client-identifier 01e8.b1fc.1b7e.7f
+ default-router 172.21.61.1
+ dns-server 172.16.224.90 10.200.100.84
+!
+ip dhcp pool Ether11_Gus_Avelar
+ host 172.21.11.254 255.255.255.0
+ client-identifier 0154.ee75.29c4.fc
+ default-router 172.21.11.1
+ dns-server 172.16.224.90 10.200.100.84
+!
+ip dhcp pool Ether32_Gus_Avelar
+ host 172.21.32.254 255.255.255.0
+ client-identifier 0154.ee75.29c4.fc
+ default-router 172.21.32.1
+ dns-server 172.16.224.90 10.200.100.84
+!
+ip dhcp pool CFTV_Sl_Guerra
+ host 172.21.12.40 255.255.255.0
+ client-identifier 0100.40a7.2744.ce
+ default-router 172.21.12.1
+!
+ip dhcp pool Valeria_alves
+ host 172.21.25.143 255.255.255.0
+ client-identifier 0180.ee73.35c9.6a
+ default-router 172.21.25.1
+ dns-server 172.16.224.90 10.200.100.84
+!
+ip dhcp pool Service_Desk_15
+ host 172.21.240.24 255.255.255.0
+ client-identifier 0180.ee73.35be.0b
+ default-router 172.21.240.1
+ dns-server 172.21.1.252 172.21.1.251
+!
+ip dhcp pool static_addresses
+ host 172.21.61.74 255.255.255.0
+ client-identifier 01d0.3311.5e1f.c1
+!
+ip dhcp pool Vlan602
+ network 172.21.80.0 255.255.255.0
+ default-router 172.21.80.1
+ dns-server 172.21.1.251 172.16.224.90 172.16.224.207
+ domain-name corp.casaevideo.com.br
+ option 119 hex 0a63.6173.6165.7669.6465.6f03.636f.6d02.6272.00
+!
+ip dhcp pool Service_Desk
+ client-identifier 0180.ee73.35c3.2d
+ default-router 172.21.240.1
+ dns-server 172.21.1.252 172.21.1.251
+!
+ip dhcp pool Service_Desk_36
+ client-identifier 01e0.9153.761a.19
+ default-router 172.21.240.1
+ dns-server 172.21.1.252 172.21.1.251
+!
+ip dhcp pool Felipe_Silva_Souza
+ host 172.21.61.239 255.255.255.0
+ client-identifier 0198.e0d9.8e69.63
+ default-router 172.21.61.1
+ dns-server 172.16.224.90 10.200.100.84
+!
+ip dhcp pool FABIANA_MOTTA
+ host 172.21.11.49 255.255.255.0
+ client-identifier 0180.ee73.35b3.fb
+!
+ip dhcp pool Service_Desk_11
+ host 172.21.240.34 255.255.255.0
+ client-identifier 0180.ee73.35c4.96
+ default-router 172.21.240.1
+ dns-server 172.21.1.252 172.21.1.251
+!
+ip dhcp pool Service_Desk_5
+ host 172.21.240.15 255.255.255.0
+ client-identifier 0180.ee73.35b4.3b
+ default-router 172.21.240.1
+ dns-server 172.21.1.252 172.21.1.251
+!
+ip dhcp pool Bruno_Will
+ host 172.21.61.228 255.255.255.0
+ client-identifier 0158.91cf.627a.e6
+ default-router 172.21.61.1
+ dns-server 172.16.224.90 10.200.100.84
+!
+ip dhcp pool Vlan75
+ network 172.21.75.0 255.255.255.0
+ default-router 172.21.75.1
+ dns-server 10.200.100.84 172.16.224.6 172.16.224.90
+ option 42 ip 10.200.100.234
+ option 66 ascii http://voip-provisioning.corp.casaevideo.com.br/voip/
+ option 4 ip 10.200.100.234
+!
+ip dhcp pool Vlan76
+ network 172.21.176.0 255.255.254.0
+ default-router 172.21.176.1
+ dns-server 10.200.100.84 172.16.224.6 172.16.224.90
+ option 42 ascii "10.200.100.234"
+ option 66 ascii http://voip-provisioning.corp.casaevideo.com.br/voip/
+!
+ip dhcp pool Vlan73
+ domain-name corp.casaevideo.com.br
+ option 119 hex 0a63.6173.6165.7669.6465.6f03.636f.6d02.6272.00
+!
+ip dhcp pool Service_Desk_Bruno
+ host 172.21.240.21 255.255.255.0
+ client-identifier 0180.ee73.278c.0c
+ default-router 172.21.240.1
+ dns-server 172.21.1.252 172.21.1.251
+!
+ip dhcp pool SD_CEVAD300255
+ host 172.21.240.22 255.255.255.0
+ client-identifier 0180.ee73.3a02.d2
+ default-router 172.21.240.1
+ dns-server 172.21.1.252 172.21.1.251
+!
+ip dhcp pool Vlan178
+ network 172.21.178.0 255.255.255.0
+ default-router 172.21.178.1
+ dns-server 10.200.100.84 172.16.224.6 172.16.224.90
+ option 42 ascii "10.200.100.234"
+ option 66 ascii http://voip-provisioning.corp.casaevideo.com.br/tip125/
+!
+ip dhcp pool vlan130
+ network 172.21.130.0 255.255.255.0
+ default-router 172.21.130.1
+ dns-server 10.200.100.84 172.16.224.90
+!
+ip dhcp pool Felipe_300_Macbook
+ host 172.21.11.203 255.255.255.0
+ client-identifier 0100.e04c.3673.53
+ default-router 172.21.11.1
+ dns-server 172.16.224.90 10.200.100.84
+ domain-name corp.casaevideo.com.br
+!
+ip dhcp pool Vlan203
+ network 10.200.30.0 255.255.255.0
+ default-router 10.200.30.1
+ dns-server 10.200.100.84 172.16.224.6 172.16.224.90
+!
+ip dhcp pool Vlan33
+ default-router 172.21.32.1
+ dns-server 10.200.100.84 172.16.224.6 172.16.224.90
+!
+ip dhcp pool Beatriz_Macbook
+ host 172.21.61.184 255.255.255.0
+ client-identifier 0180.e650.1861.b0
+!
+ip dhcp pool Bruno_Will_Ethernet
+ host 172.21.11.33 255.255.255.0
+ client-identifier 0164.1c67.80bc.05
+ default-router 172.21.11.1
+ domain-name corp.casaevideo.com.br
+ dns-server 172.16.224.90 10.200.100.84
+!
+ip dhcp pool RioCard_ADM
+ host 172.21.72.70 255.255.255.0
+ client-identifier 0180.ee73.2fab.e3
+ default-router 172.21.72.1
+!
+ip dhcp pool Service_Desk_Bruno_Marinho
+ host 172.21.240.29 255.255.255.0
+ client-identifier 0180.ee73.3a03.8d
+ default-router 172.21.240.1
+ dns-server 172.21.1.252 172.21.1.251
+!
+ip dhcp pool Service_Desk_Elizangela_Maria
+ host 172.21.240.23 255.255.255.0
+ client-identifier 0180.ee73.33a5.a4
+ default-router 172.21.240.1
+ dns-server 172.21.1.252 172.21.1.251
+!
+ip dhcp pool Service_Desk_Hugo
+ host 172.21.240.20 255.255.255.0
+ client-identifier 0180.ee73.33a0.e0
+ default-router 172.21.240.1
+ dns-server 172.21.1.252 172.21.1.251
+!
+ip dhcp pool Mario_SD
+ host 172.21.240.30 255.255.255.0
+ client-identifier 0180.ee73.35c9.b0
+ default-router 172.21.240.1
+ dns-server 172.21.1.252 172.21.1.251
+!
+ip dhcp pool Vlan971
+ network 10.32.90.0 255.255.255.0
+ default-router 10.32.90.31
+ dns-server 172.21.1.252 172.21.1.251
+!
+ip dhcp pool Vlan960
+ network 10.42.90.0 255.255.255.192
+ default-router 10.42.90.31
+ dns-server 172.21.1.252 172.21.1.251
+!
+ip dhcp pool Service_Desk_Elder
+ host 172.21.240.11 255.255.255.0
+ client-identifier 0180.ee73.35c0.eb
+ default-router 172.21.240.1
+ dns-server 172.21.1.252 172.21.1.251
+!
+ip dhcp pool Service_Desk_Luter
+ host 172.21.240.13 255.255.255.0
+ client-identifier 0180.ee73.2fb5.5b
+ default-router 172.21.240.1
+ dns-server 172.21.1.252 172.21.1.251
+!
+ip dhcp pool VideoConferecia_RoomKit_Nereidas
+ host 172.21.32.40 255.255.255.0
+ client-identifier 4ce1.7610.620d
+ default-router 172.21.32.1
+!
+ip dhcp pool vlan21
+!
+ip dhcp pool Service_Desk_WIGSON
+ host 172.21.240.25 255.255.255.0
+ client-identifier 0180.ee73.2fad.4f
+ default-router 172.21.240.1
+ dns-server 172.21.1.252 172.21.1.251
+!
+ip dhcp pool Telepresence_ADM_Webex_Kit_Home
+ host 172.21.77.16 255.255.255.0
+ client-identifier 4ce1.7565.d108
+ default-router 172.21.77.1
+ dns-server 172.21.1.252 172.20.0.185
+ lease 8
+!
+ip dhcp pool Vlan12
+ network 172.21.12.0 255.255.255.0
+ default-router 172.21.12.1
+ dns-server 172.21.1.252 172.21.1.251
+!
+ip dhcp pool vlan240
+ network 172.21.240.0 255.255.255.0
+ default-router 172.21.240.1
+ dns-server 172.21.1.252 172.21.1.251
+!
+ip dhcp pool telecom
+ host 172.21.61.4 255.255.255.0
+ client-identifier a86b.adfe.f2fb
+ default-router 172.21.60.1
+ dns-server 172.21.1.252 172.21.1.251
+!
+ip dhcp pool telecom781
+ host 172.21.8.14 255.255.255.192
+ client-identifier 40b0.3493.f3c2
+ default-router 172.21.8.1
+ dns-server 172.21.1.252 172.21.1.251 8.8.8.8
+ domain-name casaevideo.com.br
+!
+ip dhcp pool Telepresence_ADM_Webex_Kit_Home_sala_gratidao
+ host 172.21.32.13 255.255.255.0
+ client-identifier c4b2.39d6.f0db
+ default-router 172.21.32.1
+ dns-server 172.21.1.252 172.20.0.185
+ lease 8
+!
+ip dhcp pool Vlan21
+ network 172.21.21.0 255.255.255.0
+ default-router 172.21.21.1
+ dns-server 172.21.1.252 172.21.1.251
+!
+ip dhcp pool Vlan606
+ network 172.21.61.0 255.255.255.0
+ default-router 172.21.61.1
+ dns-server 172.21.1.252 172.21.1.251
+ lease 100
+!
+ip dhcp pool Vlan32
+ network 172.21.32.0 255.255.255.0
+ default-router 172.21.32.1
+ dns-server 172.21.1.252 172.21.1.251
+!
+ip dhcp pool Vlan31
+ network 172.21.31.0 255.255.255.0
+ default-router 172.21.31.1
+ dns-server 172.21.1.252 172.21.1.251
+!
+ip dhcp pool ap_adm_mx_91
+ host 172.21.78.91 255.255.255.0
+ client-identifier 9818.8873.dc84
+ default-router 172.21.78.1
+ dns-server 8.8.8.8 8.8.4.4
+!
+!
+no ip domain-lookup
+ip domain-name casaevideo.com.br
+ip name-server 172.16.224.11
+ip accounting-list 0.0.0.0 255.255.255.0
+!
+stack-power stack Powerstack-1
+!
+!
+!
+crypto pki trustpoint TP-self-signed-1451004800
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-1451004800
+ revocation-check none
+ rsakeypair TP-self-signed-1451004800
+!
+!
+crypto pki certificate chain TP-self-signed-1451004800
+ certificate self-signed 02
+  30820256 308201BF A0030201 02020102 300D0609 2A864886 F70D0101 04050030
+  31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274
+  69666963 6174652D 31343531 30303438 3030301E 170D3933 30333031 32333136
+  30385A17 0D323030 31303130 30303030 305A3031 312F302D 06035504 03132649
+  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D31 34353130
+  30343830 3030819F 300D0609 2A864886 F70D0101 01050003 818D0030 81890281
+  81009BEA 2CECE29C 023E1244 E1A63AE0 B76D2F08 F9CE5585 30BD534C 16A62EC3
+  51C36931 87C8F19D 426FBE7F D7CE69CC ABE45B24 ACAEDEC6 AEBF534F 838F5656
+  A0451AAA F86060B1 246A0346 EF6114FE 4B5FE2CC BA528994 A697E7A8 A049B73E
+  D67E1FA0 BF28919A 3BD49B03 218D9CD4 09CDEAE4 211B5940 18F304B7 8D3D3E19
+  6A5D0203 010001A3 7E307C30 0F060355 1D130101 FF040530 030101FF 30290603
+  551D1104 22302082 1E535754 5F434F52 455F4144 4D2E6361 73616576 6964656F
+  2E636F6D 2E627230 1F060355 1D230418 30168014 D1BFB08C 5EFC4F45 FA7B0444
+  88790E9F D032984B 301D0603 551D0E04 160414D1 BFB08C5E FC4F45FA 7B044488
+  790E9FD0 32984B30 0D06092A 864886F7 0D010104 05000381 81001413 CB1F84B9
+  A8F3B8C4 F435DCE7 D1452268 E218331B 79794425 DE6AC8E4 D9848AC2 FDD65AFA
+  ED7283C0 AC2902F9 206DF0A7 53DAAD24 8A865B8D 1CF11DD4 F56B84BA 736446CF
+  5D00D822 B5D6D266 9B5E6395 D476996A EC0C4006 1DD0B360 FFFDA0F2 BD893961
+  64B2CD94 AA9D5E63 269EB2C2 1FA2D90C F138F2D7 A6C63C64 A604
+        quit
+!
+!
+!
+!
+spanning-tree mode pvst
+no spanning-tree optimize bpdu transmission
+spanning-tree extend system-id
+spanning-tree vlan 1,10-12,21-23,25,31-32,40,64,68,73,77,90,100 priority 4096
+spanning-tree vlan 101-102,120-121,200,240-241,250-253,400,500 priority 4096
+spanning-tree vlan 601-608,700-702,709-710,781-784 priority 4096
+!
+!
+!
+!
+!
+!
+!
+!
+!
+vlan internal allocation policy ascending
+!
+ip telnet source-interface Vlan10
+ip ssh version 2
+!
+track 1 ip sla 1 reachability
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 1.1.1.1 255.255.255.255
+!
+interface Loopback2
+ ip address 172.21.10.254 255.255.255.255
+!
+interface Port-channel1
+ description SWT_ADM_1A_11-PO1
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ load-interval 30
+!
+interface Port-channel2
+ description SWT_ADM_7A_01
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ load-interval 30
+!
+interface Port-channel3
+ description SWT_ADM_7A_02
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ load-interval 30
+!
+interface Port-channel4
+ description SWT_ADM_7A_03
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ load-interval 30
+!
+interface Port-channel5
+ description SWT_ADM_8A_01
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ load-interval 30
+!
+interface Port-channel6
+ description SWT_ADM_9A_02
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ load-interval 30
+!
+interface Port-channel7
+ description SWT_ADM_9A_03
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ load-interval 30
+!
+interface Port-channel8
+ description SWT_ADM_9A_04
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ load-interval 30
+!
+interface Port-channel9
+ description SWT_ADM_9A_04
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ load-interval 30
+!
+interface Port-channel10
+ description SWT_ADM_9A_05-PO1
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ load-interval 30
+!
+interface Port-channel11
+ description SWT_ADM_7A_04-PO1
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ load-interval 30
+!
+interface Port-channel12
+ description SWT_ADM_3B_34-PO1
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface Port-channel13
+ description SWT_SAC_41-PO1
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ load-interval 30
+!
+interface Port-channel14
+ description SWT_SAC_42-PO1
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ load-interval 30
+!
+interface Port-channel15
+ description SWT_ADM_8A_03
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ load-interval 30
+!
+interface Port-channel16
+ description SWT_ADM_8A_03
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ load-interval 30
+!
+interface Port-channel17
+ description SWT_ADM_8A_02
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ load-interval 30
+!
+interface Port-channel18
+ description SWT_ADM_2A_25-PO1
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ load-interval 30
+!
+interface Port-channel19
+ description SWT_ADM_7A_10-PO1
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ load-interval 30
+!
+interface Port-channel20
+ description CORE-VELHO
+ no switchport
+ ip address 172.21.254.66 255.255.255.252
+ load-interval 30
+!
+interface Port-channel21
+ description SWT_ADM_1C_17-PO21
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ load-interval 30
+!
+interface Port-channel22
+ description TRUNK ENCLOSURE HPe
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 200
+ switchport trunk allowed vlan 100,101,200,203,400,701,702,709,710,1000
+ switchport mode trunk
+!
+interface Port-channel23
+ description TRUNK ENCLOSURE HPe
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 200
+ switchport trunk allowed vlan 100,101,200,203,400,701,702,709,710,1000
+ switchport mode trunk
+!
+interface Port-channel25
+ description CONTROLLER_WI-FI_1
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 64,68,252,253
+ switchport mode trunk
+ load-interval 30
+ shutdown
+!
+interface Port-channel29
+ description CONTROLLER_WI-FI_2
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 253
+ switchport trunk allowed vlan 64,68,252,253
+ switchport mode trunk
+ load-interval 30
+ shutdown
+!
+interface Port-channel30
+ description SW-DMZ-MPLS
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,710,803
+ switchport mode trunk
+ load-interval 30
+!
+interface Port-channel31
+ description SW-ADM-SERV-BKP po1
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport nonegotiate
+ load-interval 30
+!
+interface Port-channel32
+ description SW-ADM-SERV-CD-Guadalupe
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,101,102,701,702,709,710
+ switchport mode trunk
+ switchport nonegotiate
+ load-interval 30
+ speed 1000
+ duplex full
+!
+interface FastEthernet0
+ no ip address
+ no ip route-cache
+ shutdown
+!
+interface GigabitEthernet1/0/1
+ description ### MERAKI MX 01 - LAN PORTA 3 ####
+ switchport access vlan 150
+ switchport mode access
+!
+interface GigabitEthernet1/0/2
+ description SWT_ADM_1B_12-Gi1/0/47
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ load-interval 30
+ channel-group 2 mode on
+!
+interface GigabitEthernet1/0/3
+ description SWT_ADM_7A_02-Gi1/0/47
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ load-interval 30
+ channel-group 3 mode on
+!
+interface GigabitEthernet1/0/4
+ description SWT_ADM_1B_14-Gi1/0/47
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ load-interval 30
+ channel-group 4 mode on
+!
+interface GigabitEthernet1/0/5
+ description SWT_ADM_2A_21-Gi1/0/47
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ load-interval 30
+ channel-group 5 mode on
+!
+interface GigabitEthernet1/0/6
+ description SWT_ADM_9A_01-Gi1/0/48
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ load-interval 30
+ channel-group 6 mode on
+!
+interface GigabitEthernet1/0/7
+ description SWT_ADM_9A_02-Gi1/0/48
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ load-interval 30
+ channel-group 7 mode on
+!
+interface GigabitEthernet1/0/8
+ description SWT_ADM_9A_04-Gi1/0/48
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ load-interval 30
+ channel-group 8 mode on
+!
+interface GigabitEthernet1/0/9
+ description SWT_ADM_9A_03-Gi1/0/48
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ load-interval 30
+ channel-group 9 mode on
+!
+interface GigabitEthernet1/0/10
+ description SWT_ADM_9A_05-Gi1/0/48
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ load-interval 30
+ channel-group 10 mode on
+!
+interface GigabitEthernet1/0/11
+ description SWT_ADM_7A_04-PO1
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ load-interval 30
+ channel-group 11 mode on
+!
+interface GigabitEthernet1/0/12
+ description SWT_ADM_3B_34-Gi0/1
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ load-interval 30
+ channel-group 12 mode on
+!
+interface GigabitEthernet1/0/13
+ description SWT_SAC_41-Gi1/0/47
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ load-interval 30
+ channel-group 13 mode on
+!
+interface GigabitEthernet1/0/14
+ description SWT_SAC_42-Gi1/0/47
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ load-interval 30
+ channel-group 14 mode on
+!
+interface GigabitEthernet1/0/15
+ description SWT_ADM_8A_03
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ load-interval 30
+ channel-group 15 mode on
+!
+interface GigabitEthernet1/0/16
+ description SWT_SERV_ADM_20-Gi1/0/47
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ load-interval 30
+ channel-group 16 mode on
+!
+interface GigabitEthernet1/0/17
+ description SWT_SERV_ADM_20-Gi1/0/47
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ load-interval 30
+ channel-group 17 mode on
+!
+interface GigabitEthernet1/0/18
+ description SWT_ADM_2A_25-Gi0/1
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ load-interval 30
+ channel-group 18 mode on
+!
+interface GigabitEthernet1/0/19
+ description SWT_ADM_1A_15-Gi0/1
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ load-interval 30
+ channel-group 19 mode on
+!
+interface GigabitEthernet1/0/20
+ description Interface_GREY
+ switchport access vlan 101
+ ip access-group controle_grey in
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet1/0/21
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet1/0/22
+ description SW-DMZ-FIREWALL-L3
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,710,803
+ switchport mode trunk
+ load-interval 30
+ channel-group 30 mode on
+!
+interface GigabitEthernet1/0/23
+ description SW-ADM-SERV-BKP Gi 0/37
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport nonegotiate
+ load-interval 30
+ channel-group 31 mode on
+!
+interface GigabitEthernet1/0/24
+ description SWT_ADM_1C_17-Gi1/0/47
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ load-interval 30
+ channel-group 21 mode on
+!
+interface GigabitEthernet1/0/25
+ description Router_Elavon
+ switchport access vlan 10
+ switchport mode access
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet1/0/26
+ description MATEUS_TELECOM
+ switchport access vlan 781
+ switchport mode access
+ load-interval 30
+ shutdown
+ speed 1000
+ duplex full
+ storm-control broadcast level 10.00
+ no cdp enable
+ spanning-tree portfast
+ spanning-tree bpdufilter enable
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/0/27
+ description CONTROLLER_WI-FI_1-P5
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 64,68,252,253
+ switchport mode trunk
+ load-interval 30
+ shutdown
+ channel-group 25 mode on
+!
+interface GigabitEthernet1/0/28
+ description CONTROLLER_WI-FI_1-P7
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 64,68,252,253
+ switchport mode trunk
+ load-interval 30
+ shutdown
+ channel-group 25 mode on
+!
+interface GigabitEthernet1/0/29
+ description CONTROLLER_WI-FI_2-P1
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 253
+ switchport trunk allowed vlan 64,68,252,253
+ switchport mode trunk
+ load-interval 30
+ shutdown
+ channel-group 29 mode on
+!
+interface GigabitEthernet1/0/30
+ description CONTROLLER_WI-FI_2-P3
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 64,68,252,253
+ switchport mode trunk
+ load-interval 30
+ shutdown
+ channel-group 29 mode on
+!
+interface GigabitEthernet1/0/31
+ description CONTROLLER_WI-FI_2-P5
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 64,68,252,253
+ switchport mode trunk
+ load-interval 30
+ shutdown
+ channel-group 29 mode on
+!
+interface GigabitEthernet1/0/32
+ description CONTROLLER_WI-FI_2-P7
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 64,68,252,253
+ switchport mode trunk
+ load-interval 30
+ shutdown
+ channel-group 29 mode on
+!
+interface GigabitEthernet1/0/33
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 200
+ switchport trunk allowed vlan 100,101,200,203,400,701,702,709,710,1000
+ switchport mode trunk
+ load-interval 30
+ channel-group 22 mode active
+!
+interface GigabitEthernet1/0/34
+ description TRUNK ENCLOSURE HPe
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 200
+ switchport trunk allowed vlan 100,101,200,203,400,701,702,709,710,1000
+ switchport mode trunk
+ load-interval 30
+ channel-group 23 mode active
+!
+interface GigabitEthernet1/0/35
+ description VIRT_SERVIDORES
+ switchport access vlan 250
+ load-interval 30
+ shutdown
+ speed 1000
+ duplex full
+!
+interface GigabitEthernet1/0/36
+ description VIRT_SERVIDORES
+ switchport access vlan 250
+ load-interval 30
+ shutdown
+ speed 1000
+ duplex full
+!
+interface GigabitEthernet1/0/37
+ description CORE-VELHO
+ no switchport
+ no ip address
+ load-interval 30
+ channel-group 20 mode on
+!
+interface GigabitEthernet1/0/38
+ description CONTROLLER_WI-FI_1-P1
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 253
+ switchport trunk allowed vlan 10,64,68,252,253,601-608,709,781
+ switchport mode trunk
+ load-interval 30
+!
+interface GigabitEthernet1/0/39
+ description CONTROLLER_WI-FI_1-P2
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 253
+ switchport trunk allowed vlan 10,64,68,252,253,601-608,709,781
+ switchport mode trunk
+ load-interval 30
+!
+interface GigabitEthernet1/0/40
+ description CONTROLLER_WI-FI_2-P1
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 253
+ switchport trunk allowed vlan 10,64,68,252,253,601-608,709,781
+ switchport mode trunk
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet1/0/41
+ description CONTROLLER_WI-FI_2-P2
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 253
+ switchport trunk allowed vlan 10,64,68,252,253,601-608,709,781
+ switchport mode trunk
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet1/0/42
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet1/0/43
+ description SW-ADM-SERV-CD-GUA_55
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,101,102,701,702,709,710
+ switchport mode trunk
+ switchport nonegotiate
+ load-interval 30
+ channel-group 32 mode on
+!
+interface GigabitEthernet1/0/44
+ description Firewall - 172.16.224.13
+ switchport access vlan 101
+ switchport mode access
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet1/0/45
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet1/0/46
+ description ASA-1
+ switchport access vlan 11
+ switchport trunk encapsulation dot1q
+ switchport mode access
+ switchport voice vlan 75
+ switchport port-security maximum 4
+ switchport port-security aging time 2
+ switchport port-security aging type inactivity
+ load-interval 30
+ storm-control broadcast level 0.10
+ no cdp enable
+ spanning-tree portfast
+ ip dhcp snooping limit rate 100
+!
+interface GigabitEthernet1/0/47
+ description ROT_INTERNET_MOBILE
+ switchport access vlan 102
+ switchport trunk allowed vlan 10,40,64,68,73,75,76,120,130,253,606-608
+ switchport mode access
+ load-interval 30
+!
+interface GigabitEthernet1/0/48
+ description FIREWALL-Check_Point
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 100,101
+ switchport mode trunk
+ load-interval 30
+ shutdown
+ spanning-tree portfast
+!
+interface GigabitEthernet1/1/1
+ shutdown
+!
+interface GigabitEthernet1/1/2
+ shutdown
+!
+interface GigabitEthernet1/1/3
+ shutdown
+!
+interface GigabitEthernet1/1/4
+ shutdown
+!
+interface TenGigabitEthernet1/1/1
+ shutdown
+!
+interface TenGigabitEthernet1/1/2
+ shutdown
+!
+interface GigabitEthernet2/0/1
+ description ### MERAKI MX 02 - LAN PORTA 3 ####
+ switchport access vlan 150
+ switchport mode access
+!
+interface GigabitEthernet2/0/2
+ description SWT_ADM_1B_12-Gi1/0/48
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ load-interval 30
+ channel-group 2 mode on
+!
+interface GigabitEthernet2/0/3
+ description SWT_ADM_7A_02-Gi1/0/48
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ load-interval 30
+ speed 1000
+ channel-group 3 mode on
+!
+interface GigabitEthernet2/0/4
+ description SWT_ADM_1B_14-Gi1/0/48
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ load-interval 30
+ channel-group 4 mode on
+!
+interface GigabitEthernet2/0/5
+ description SWT_ADM_2A_21-Gi1/0/48
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ load-interval 30
+ channel-group 5 mode on
+!
+interface GigabitEthernet2/0/6
+ description SWT_ADM_9A_01-Gi1/0/47
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ load-interval 30
+ channel-group 6 mode on
+!
+interface GigabitEthernet2/0/7
+ description SWT_ADM_9A_02-Gi1/0/47
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ load-interval 30
+ channel-group 7 mode on
+!
+interface GigabitEthernet2/0/8
+ description SWT_ADM_9A_04-Gi1/0/47
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ load-interval 30
+ channel-group 8 mode on
+!
+interface GigabitEthernet2/0/9
+ description SWT_ADM_9A_03-Gi1/0/47
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ load-interval 30
+ channel-group 9 mode on
+!
+interface GigabitEthernet2/0/10
+ description SWT_ADM_9A_05-Gi1/0/47
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ load-interval 30
+ channel-group 10 mode on
+!
+interface GigabitEthernet2/0/11
+ description SWT_ADM_7A_04-PO1
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ load-interval 30
+ channel-group 11 mode on
+!
+interface GigabitEthernet2/0/12
+ description SWT_ADM_3B_33-Gi0/2
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ load-interval 30
+ channel-group 12 mode on
+!
+interface GigabitEthernet2/0/13
+ description SWT_SAC_41-Gi1/0/48
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ load-interval 30
+ channel-group 13 mode on
+!
+interface GigabitEthernet2/0/14
+ description SWT_SAC_42-Gi1/0/48
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ load-interval 30
+ shutdown
+ channel-group 14 mode on
+!
+interface GigabitEthernet2/0/15
+ description SWT_ADM_8A_03
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ load-interval 30
+ channel-group 15 mode on
+!
+interface GigabitEthernet2/0/16
+ description SWT_SERV_ADM_20-Gi1/0/48
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ load-interval 30
+ channel-group 16 mode on
+!
+interface GigabitEthernet2/0/17
+ description SWT_SERV_ADM_20-Gi1/0/48
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ load-interval 30
+ channel-group 17 mode on
+!
+interface GigabitEthernet2/0/18
+ description SWT_ADM_2A_25-Gi0/2
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ load-interval 30
+ channel-group 18 mode on
+!
+interface GigabitEthernet2/0/19
+ description SWT_ADM_1A_15-Gi0/1
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ load-interval 30
+ channel-group 19 mode on
+!
+interface GigabitEthernet2/0/20
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet2/0/21
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet2/0/22
+ description SW-DMZ-FIREWALL-L3
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,710,803
+ switchport mode trunk
+ load-interval 30
+ channel-group 30 mode on
+!
+interface GigabitEthernet2/0/23
+ description SW-ADM-SERV-BKP Gi 0/38
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport nonegotiate
+ load-interval 30
+ channel-group 31 mode on
+!
+interface GigabitEthernet2/0/24
+ description SWT_ADM_1C_17-Gi1/0/48
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ load-interval 30
+ channel-group 21 mode on
+!
+interface GigabitEthernet2/0/25
+ description CONTROLLER_WI-FI_1-P2
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 64,68,252,253
+ switchport mode trunk
+ load-interval 30
+ shutdown
+ channel-group 25 mode on
+!
+interface GigabitEthernet2/0/26
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet2/0/27
+ description CONTROLLER_WI-FI_1-P6
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 64,68,252,253
+ switchport mode trunk
+ load-interval 30
+ shutdown
+ channel-group 25 mode on
+!
+interface GigabitEthernet2/0/28
+ description CONTROLLER_WI-FI_1-P8
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 64,68,252,253
+ switchport mode trunk
+ load-interval 30
+ shutdown
+ channel-group 25 mode on
+!
+interface GigabitEthernet2/0/29
+ description CONTROLLER_WI-FI_2-P2
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 64,68,252,253
+ switchport mode trunk
+ load-interval 30
+ shutdown
+ channel-group 29 mode on
+!
+interface GigabitEthernet2/0/30
+ description CONTROLLER_WI-FI_2-P4
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 64,68,252,253
+ switchport mode trunk
+ load-interval 30
+ shutdown
+ channel-group 29 mode on
+!
+interface GigabitEthernet2/0/31
+ description CONTROLLER_WI-FI_2-P6
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 64,68,252,253
+ switchport mode trunk
+ load-interval 30
+ shutdown
+ channel-group 29 mode on
+!
+interface GigabitEthernet2/0/32
+ description CONTROLLER_WI-FI_2-P8
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 64,68,252,253
+ switchport mode trunk
+ load-interval 30
+ shutdown
+ channel-group 29 mode on
+!
+interface GigabitEthernet2/0/33
+ description TRUNK ENCLOSURE HPe
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 200
+ switchport trunk allowed vlan 100,101,200,203,400,701,702,709,710,1000
+ switchport mode trunk
+ load-interval 30
+ channel-group 22 mode active
+!
+interface GigabitEthernet2/0/34
+ description TRUNK ENCLOSURE HPe
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 200
+ switchport trunk allowed vlan 100,101,200,203,400,701,702,709,710,1000
+ switchport mode trunk
+ load-interval 30
+ channel-group 23 mode active
+!
+interface GigabitEthernet2/0/35
+ description VIRT_SERVIDORES
+ switchport access vlan 250
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet2/0/36
+ description VIRT_SERVIDORES
+ switchport access vlan 10
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet2/0/37
+ description CORE-VELHO
+ no switchport
+ no ip address
+ load-interval 30
+ channel-group 20 mode on
+!
+interface GigabitEthernet2/0/38
+ description CONTROLLER_WI-FI_1-P3
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 253
+ switchport trunk allowed vlan 10,64,68,252,253,601-608,709,781
+ switchport mode trunk
+ load-interval 30
+!
+interface GigabitEthernet2/0/39
+ description CONTROLLER_WI-FI_1-P4
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 253
+ switchport trunk allowed vlan 10,64,68,252,253,601-608,709,781
+ switchport mode trunk
+ load-interval 30
+!
+interface GigabitEthernet2/0/40
+ description CONTROLLER_WI-FI_2-P3
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 253
+ switchport trunk allowed vlan 10,64,68,252,253,601-608,709,781
+ switchport mode trunk
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet2/0/41
+ description CONTROLLER_WI-FI_2-P4
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 253
+ switchport trunk allowed vlan 10,64,68,252,253,601-608,709,781
+ switchport mode trunk
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet2/0/42
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet2/0/43
+ description SW-ADM-SERV-CD-GUA_55
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,101,102,701,702,709,710
+ switchport mode trunk
+ switchport nonegotiate
+ load-interval 30
+ duplex full
+ channel-group 32 mode on
+!
+interface GigabitEthernet2/0/44
+ description LINK_OI_INTERNET_6Mbps
+ switchport access vlan 101
+ switchport mode access
+ bandwidth 6144
+ load-interval 30
+ shutdown
+ speed 100
+ duplex full
+ spanning-tree portfast
+!
+interface GigabitEthernet2/0/45
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet2/0/46
+ description ASA-2
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 709
+ switchport mode trunk
+ load-interval 30
+ no cdp enable
+ spanning-tree portfast
+ spanning-tree bpdufilter enable
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet2/0/47
+ switchport access vlan 102
+ load-interval 30
+!
+interface GigabitEthernet2/0/48
+ switchport access vlan 102
+ load-interval 30
+!
+interface GigabitEthernet2/1/1
+ shutdown
+!
+interface GigabitEthernet2/1/2
+ shutdown
+!
+interface GigabitEthernet2/1/3
+ shutdown
+!
+interface GigabitEthernet2/1/4
+ shutdown
+!
+interface TenGigabitEthernet2/1/1
+ shutdown
+!
+interface TenGigabitEthernet2/1/2
+ shutdown
+!
+interface GigabitEthernet3/0/1
+ description CENTRAL CALLCENTER
+ switchport access vlan 75
+ switchport mode access
+ load-interval 30
+!
+interface GigabitEthernet3/0/2
+ switchport access vlan 10
+ switchport mode access
+ load-interval 30
+!
+interface GigabitEthernet3/0/3
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet3/0/4
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet3/0/5
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet3/0/6
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet3/0/7
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet3/0/8
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet3/0/9
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet3/0/10
+ description Brocade
+ switchport access vlan 10
+ switchport mode access
+ load-interval 30
+!
+interface GigabitEthernet3/0/11
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet3/0/12
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet3/0/13
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet3/0/14
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet3/0/15
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet3/0/16
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet3/0/17
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet3/0/18
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet3/0/19
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet3/0/20
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet3/0/21
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet3/0/22
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet3/0/23
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet3/0/24
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet3/0/25
+ switchport access vlan 200
+ switchport mode access
+ load-interval 30
+!
+interface GigabitEthernet3/0/26
+ description BLADE HP
+ switchport access vlan 200
+ switchport mode access
+ load-interval 30
+!
+interface GigabitEthernet3/0/27
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet3/0/28
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet3/0/29
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet3/0/30
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet3/0/31
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet3/0/32
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet3/0/33
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet3/0/34
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet3/0/35
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet3/0/36
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet3/0/37
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet3/0/38
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet3/0/39
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet3/0/40
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet3/0/41
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet3/0/42
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet3/0/43
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet3/0/44
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet3/0/45
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet3/0/46
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet3/0/47
+ switchport access vlan 701
+ load-interval 30
+!
+interface GigabitEthernet3/0/48
+ switchport access vlan 701
+ load-interval 30
+!
+interface GigabitEthernet3/1/1
+ shutdown
+!
+interface GigabitEthernet3/1/2
+ shutdown
+!
+interface GigabitEthernet3/1/3
+ shutdown
+!
+interface GigabitEthernet3/1/4
+ shutdown
+!
+interface TenGigabitEthernet3/1/1
+ shutdown
+!
+interface TenGigabitEthernet3/1/2
+ shutdown
+!
+interface GigabitEthernet4/0/1
+ switchport access vlan 100
+ switchport mode access
+ load-interval 30
+!
+interface GigabitEthernet4/0/2
+ switchport access vlan 701
+ switchport mode access
+ load-interval 30
+!
+interface GigabitEthernet4/0/3
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet4/0/4
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet4/0/5
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet4/0/6
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet4/0/7
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet4/0/8
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet4/0/9
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet4/0/10
+ description Brocade
+ switchport access vlan 10
+ switchport mode access
+ load-interval 30
+!
+interface GigabitEthernet4/0/11
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet4/0/12
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet4/0/13
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet4/0/14
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet4/0/15
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet4/0/16
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet4/0/17
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet4/0/18
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet4/0/19
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet4/0/20
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet4/0/21
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet4/0/22
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet4/0/23
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet4/0/24
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet4/0/25
+ switchport access vlan 200
+ switchport mode access
+ load-interval 30
+!
+interface GigabitEthernet4/0/26
+ description BLADE HP
+ switchport access vlan 200
+ switchport mode access
+ load-interval 30
+!
+interface GigabitEthernet4/0/27
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet4/0/28
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet4/0/29
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet4/0/30
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet4/0/31
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet4/0/32
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet4/0/33
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet4/0/34
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet4/0/35
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet4/0/36
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet4/0/37
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet4/0/38
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet4/0/39
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet4/0/40
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet4/0/41
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet4/0/42
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet4/0/43
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet4/0/44
+ load-interval 30
+ shutdown
+!
+interface GigabitEthernet4/0/45
+ description TEMP_INFRA
+ switchport access vlan 781
+ switchport mode access
+ load-interval 30
+!
+interface GigabitEthernet4/0/46
+ description TEMP_INFRA
+ switchport access vlan 781
+ switchport mode access
+ load-interval 30
+!
+interface GigabitEthernet4/0/47
+ description TEMP_INFRA
+ switchport access vlan 781
+ switchport trunk encapsulation dot1q
+ switchport mode access
+ load-interval 30
+!
+interface GigabitEthernet4/0/48
+ description TEMP_WANTUIL
+ switchport access vlan 701
+ switchport mode access
+ load-interval 30
+!
+interface GigabitEthernet4/1/1
+ shutdown
+!
+interface GigabitEthernet4/1/2
+ shutdown
+!
+interface GigabitEthernet4/1/3
+ shutdown
+!
+interface GigabitEthernet4/1/4
+ shutdown
+!
+interface TenGigabitEthernet4/1/1
+ shutdown
+!
+interface TenGigabitEthernet4/1/2
+ shutdown
+!
+interface Vlan1
+ description Vlan1 do Core Antigo
+ ip address 10.2.1.254 255.255.255.0
+!
+interface Vlan10
+ description GERENCIA_TELECOM
+ ip address 172.21.10.1 255.255.255.128
+ no ip redirects
+ no ip proxy-arp
+!
+interface Vlan11
+ description REDE-ANDAR-1A
+ ip address 172.21.11.1 255.255.255.0
+ no ip redirects
+ no ip proxy-arp
+!
+interface Vlan12
+ description REDE-ANDAR-1B
+ ip address 172.21.12.1 255.255.255.0
+ no ip redirects
+ no ip proxy-arp
+!
+interface Vlan21
+ description REDE-ANDAR-2A
+ ip address 172.21.21.1 255.255.255.0
+ no ip redirects
+ no ip proxy-arp
+!
+interface Vlan22
+ description REDE-ANDAR-2B
+ ip address 172.21.22.1 255.255.255.0
+ no ip redirects
+ no ip proxy-arp
+!
+interface Vlan23
+ description REDE-ANDAR-2C
+ ip address 172.21.23.1 255.255.255.0
+ no ip redirects
+ no ip proxy-arp
+!
+interface Vlan24
+ description REDE-ANDAR-2D
+ ip address 172.21.24.1 255.255.255.0
+ no ip redirects
+ no ip proxy-arp
+!
+interface Vlan25
+ description REDE-ANDAR-2E
+ ip address 172.21.25.1 255.255.255.0
+ no ip redirects
+ no ip proxy-arp
+!
+interface Vlan30
+ no ip address
+!
+interface Vlan31
+ description REDE-ANDAR-3A
+ ip address 172.21.31.1 255.255.255.0
+ no ip redirects
+ no ip proxy-arp
+!
+interface Vlan32
+ description REDE-ANDAR-3B
+ ip address 172.21.32.1 255.255.255.0
+ no ip redirects
+ no ip proxy-arp
+!
+interface Vlan33
+ ip address 172.21.33.1 255.255.255.0
+!
+interface Vlan40
+ description REDE-SAC
+ ip address 172.21.40.1 255.255.255.0
+ no ip redirects
+ no ip proxy-arp
+!
+interface Vlan64
+ description Wi-Fi_ADMCV
+ ip address 172.21.64.1 255.255.252.0
+ no ip redirects
+ no ip proxy-arp
+!
+interface Vlan68
+ description Wi-Fi_MOBILE
+ ip address 172.21.68.1 255.255.252.0
+ no ip redirects
+ no ip proxy-arp
+!
+interface Vlan73
+ description PORTABLE
+ ip address 172.21.73.1 255.255.255.0
+!
+interface Vlan75
+ description REDE-VOZ-01
+ ip address 172.21.75.1 255.255.255.0
+ no ip redirects
+ no ip proxy-arp
+!
+interface Vlan76
+ description REDE-VOZ-02
+ ip address 172.21.176.1 255.255.254.0
+ no ip redirects
+ no ip proxy-arp
+!
+interface Vlan77
+ description VIDEO
+ ip address 172.21.77.1 255.255.255.0
+ no ip redirects
+ no ip proxy-arp
+!
+interface Vlan78
+ description Meraki APS
+ ip address 172.21.78.1 255.255.255.0
+ no ip redirects
+ no ip proxy-arp
+!
+interface Vlan100
+ description SERVIDORES_ANTIGA
+ ip address 10.200.100.1 255.255.255.0
+ no ip redirects
+ no ip proxy-arp
+ standby 1 ip 10.200.100.2
+!
+interface Vlan101
+ description SERVIDORES_ANTIGA_172.16
+ ip address 172.16.224.31 255.255.252.0
+ no ip redirects
+ no ip proxy-arp
+ standby 2 ip 172.16.224.113
+!
+interface Vlan102
+ description SRV_CD_GUADALUPE_172.16.228
+ ip address 172.16.228.31 255.255.252.0
+ no ip redirects
+ no ip proxy-arp
+!
+interface Vlan120
+ description GERENCIA_IMPRESSORA
+ ip address 172.21.120.2 255.255.255.0
+ no ip proxy-arp
+ standby 10 ip 172.21.120.1
+ standby 10 priority 105
+ standby 10 preempt
+!
+interface Vlan121
+ description RELOGIO_DE_PONTO
+ ip address 172.21.121.1 255.255.255.0
+ no ip redirects
+ no ip proxy-arp
+!
+interface Vlan130
+ description CAMERAS_1
+ ip address 172.21.130.1 255.255.255.0
+!
+interface Vlan150
+ description ## TRANSITO FW X MERAKI-MX ##
+ ip address 172.26.1.1 255.255.255.248
+!
+interface Vlan178
+ ip address 172.21.178.1 255.255.255.0
+!
+interface Vlan200
+ description VLAN Gerenciamento Ambiente HPe
+ ip address 172.21.200.1 255.255.255.0
+!
+interface Vlan203
+ description GATEWAY_GSM
+ ip address 10.200.30.1 255.255.255.0
+ no ip redirects
+ no ip proxy-arp
+!
+interface Vlan240
+ description SERVICE_DESK
+ ip address 172.21.240.1 255.255.255.0
+ no ip proxy-arp
+!
+interface Vlan241
+ description GER_SUSTENTACAO
+ ip address 172.21.241.1 255.255.255.0
+ no ip proxy-arp
+!
+interface Vlan250
+ ip address 172.21.250.1 255.255.255.0
+ no ip proxy-arp
+!
+interface Vlan251
+ description HOMOLOGACAO_REDES
+ ip address 172.21.251.1 255.255.255.0
+ no ip redirects
+ no ip proxy-arp
+!
+interface Vlan252
+ description REDE_APs
+ ip address 172.21.252.1 255.255.255.0
+ no ip redirects
+ no ip proxy-arp
+!
+interface Vlan253
+ description GERENCIA_APs
+ ip address 172.21.253.1 255.255.255.0
+ no ip redirects
+ no ip proxy-arp
+!
+interface Vlan601
+ description Wi-Fi_PDV
+ ip address 172.21.60.1 255.255.255.248
+ no ip redirects
+ no ip proxy-arp
+!
+interface Vlan602
+ description Wi_Fi_LOJA
+ ip address 172.21.80.1 255.255.255.0
+ no ip redirects
+ no ip proxy-arp
+!
+interface Vlan603
+ description Wi-Fi_ASSOCIADOS
+ ip address 172.21.60.17 255.255.255.248
+ no ip redirects
+ no ip proxy-arp
+!
+interface Vlan604
+ description Wi-Fi_VISITANTES
+ ip address 172.21.60.25 255.255.255.248
+ no ip redirects
+ no ip proxy-arp
+!
+interface Vlan605
+ description Wi-Fi_LJ-FUTURO
+ ip address 172.21.60.33 255.255.255.248
+ no ip redirects
+ no ip proxy-arp
+!
+interface Vlan606
+ description Wi-Fi_ADMCV
+ ip address 172.21.61.1 255.255.255.0
+ no ip redirects
+ no ip proxy-arp
+!
+interface Vlan607
+ description Wi-Fi_MOBILE
+ ip address 172.21.62.1 255.255.254.0
+ no ip redirects
+ no ip proxy-arp
+!
+interface Vlan608
+ description Wi-Fi_CONSULTING
+ ip address 172.21.72.1 255.255.255.0
+ no ip redirects
+ no ip proxy-arp
+!
+interface Vlan700
+ description SERVIDORES_HEARTBEAT
+ ip address 172.21.0.1 255.255.255.0
+ no ip redirects
+ no ip proxy-arp
+!
+interface Vlan701
+ description SERVIDORES_WINDOWS
+ ip address 172.21.1.1 255.255.255.0
+ no ip redirects
+ no ip proxy-arp
+!
+interface Vlan702
+ description SERVIDORES_LINUX
+ ip address 172.21.2.1 255.255.255.0
+ no ip redirects
+ no ip proxy-arp
+!
+interface Vlan703
+ description SERVIDORES_CLOUD
+ ip address 172.21.3.1 255.255.255.0
+ no ip redirects
+ no ip proxy-arp
+!
+interface Vlan709
+ ip address 172.21.9.1 255.255.255.0
+ no ip redirects
+ no ip proxy-arp
+!
+interface Vlan781
+ description INFRA_TELCOM
+ ip address 172.21.8.1 255.255.255.192
+ no ip redirects
+ no ip proxy-arp
+!
+interface Vlan782
+ description INFRA_SERVIDORES
+ ip address 172.21.8.65 255.255.255.192
+ no ip redirects
+ no ip proxy-arp
+!
+interface Vlan783
+ description INFRA_BANCO
+ ip address 172.21.8.129 255.255.255.192
+ no ip redirects
+ no ip proxy-arp
+!
+interface Vlan784
+ description INFRA_SEGURANCA
+ ip address 172.21.8.193 255.255.255.192
+ no ip redirects
+ no ip proxy-arp
+!
+no ip http server
+no ip http secure-server
+ip flow-export source Port-channel17
+ip flow-export version 5
+ip flow-export destination 172.16.225.4 2055
+!
+ip route 0.0.0.0 0.0.0.0 172.21.9.10
+ip route 10.3.85.0 255.255.255.0 172.26.1.2 name LJ385
+ip route 10.3.99.0 255.255.255.0 172.26.1.2 name LJ399
+ip route 10.4.0.15 255.255.255.255 172.16.224.111 name CONDUCTOR
+ip route 10.4.6.0 255.255.255.0 172.26.1.2 name LJ406
+ip route 10.4.9.0 255.255.255.0 172.26.1.2 name LJ409
+ip route 10.4.14.0 255.255.255.0 172.26.1.2 name LJ414
+ip route 10.4.17.0 255.255.255.0 172.26.1.2 name LJ417
+ip route 10.4.26.0 255.255.255.0 172.26.1.2 name LJ426
+ip route 10.4.27.0 255.255.255.0 172.26.1.2 name LJ427
+ip route 10.5.38.0 255.255.255.0 172.26.1.2 name LJ538
+ip route 10.5.44.0 255.255.255.0 172.26.1.2 name LJ544
+ip route 10.5.45.0 255.255.255.0 172.26.1.2 name LJ545
+ip route 10.5.52.0 255.255.255.0 172.26.1.2 name LJ552
+ip route 10.5.57.0 255.255.255.0 172.26.1.2 name LJ557
+ip route 10.5.58.0 255.255.255.0 172.26.1.2 name LJ558
+ip route 10.5.59.0 255.255.255.0 172.26.1.2 name LJ559
+ip route 10.5.73.0 255.255.255.0 172.26.1.2 name LJ573
+ip route 10.5.91.0 255.255.255.0 172.26.1.2 name LJ591
+ip route 10.13.85.0 255.255.255.0 172.26.1.2 name LJ385
+ip route 10.13.99.0 255.255.255.0 172.26.1.2 name LJ399
+ip route 10.14.6.0 255.255.255.0 172.26.1.2 name LJ406
+ip route 10.14.9.0 255.255.255.0 172.26.1.2 name LJ409
+ip route 10.14.14.0 255.255.255.0 172.26.1.2 name LJ414
+ip route 10.14.17.0 255.255.255.0 172.26.1.2 name LJ417
+ip route 10.14.26.0 255.255.255.0 172.26.1.2 name LJ426
+ip route 10.14.27.0 255.255.255.0 172.26.1.2 name LJ427
+ip route 10.14.73.0 255.255.255.0 172.26.1.2 name ROTA-QUIOSQUE_473
+ip route 10.15.38.0 255.255.255.0 172.26.1.2 name LJ538
+ip route 10.15.44.0 255.255.255.0 172.26.1.2 name LJ544
+ip route 10.15.45.0 255.255.255.0 172.26.1.2 name LJ545
+ip route 10.15.52.0 255.255.255.0 172.26.1.2 name LJ552
+ip route 10.15.57.0 255.255.255.0 172.26.1.2 name LJ557
+ip route 10.15.58.0 255.255.255.0 172.26.1.2 name LJ558
+ip route 10.15.59.0 255.255.255.0 172.26.1.2 name LJ559
+ip route 10.15.73.0 255.255.255.0 172.26.1.2 name LJ573
+ip route 10.15.91.0 255.255.255.0 172.26.1.2 name LJ591
+ip route 10.23.85.0 255.255.255.0 172.26.1.2 name LJ385
+ip route 10.23.99.0 255.255.255.0 172.26.1.2 name LJ399
+ip route 10.24.6.0 255.255.255.0 172.26.1.2 name LJ406
+ip route 10.24.9.0 255.255.255.0 172.26.1.2 name LJ409
+ip route 10.24.14.0 255.255.255.0 172.26.1.2 name LJ414
+ip route 10.24.17.0 255.255.255.0 172.26.1.2 name LJ417
+ip route 10.24.26.0 255.255.255.0 172.26.1.2 name LJ426
+ip route 10.24.27.0 255.255.255.0 172.26.1.2 name LJ427
+ip route 10.25.38.0 255.255.255.0 172.26.1.2 name LJ538
+ip route 10.25.44.0 255.255.255.0 172.26.1.2 name LJ544
+ip route 10.25.45.0 255.255.255.0 172.26.1.2 name LJ545
+ip route 10.25.52.0 255.255.255.0 172.26.1.2 name LJ552
+ip route 10.25.57.0 255.255.255.0 172.26.1.2 name LJ557
+ip route 10.25.58.0 255.255.255.0 172.26.1.2 name LJ558
+ip route 10.25.59.0 255.255.255.0 172.26.1.2 name LJ559
+ip route 10.25.73.0 255.255.255.0 172.26.1.2 name LJ573
+ip route 10.25.91.0 255.255.255.0 172.26.1.2 name LJ591
+ip route 10.33.85.0 255.255.255.0 172.26.1.2 name LJ385
+ip route 10.33.99.0 255.255.255.0 172.26.1.2 name LJ399
+ip route 10.34.6.0 255.255.255.0 172.26.1.2 name LJ406
+ip route 10.34.9.0 255.255.255.0 172.26.1.2 name LJ409
+ip route 10.34.14.0 255.255.255.0 172.26.1.2 name LJ414
+ip route 10.34.17.0 255.255.255.0 172.26.1.2 name LJ417
+ip route 10.34.26.0 255.255.255.0 172.26.1.2 name LJ426
+ip route 10.34.27.0 255.255.255.0 172.26.1.2 name LJ427
+ip route 10.35.38.0 255.255.255.0 172.26.1.2 name LJ538
+ip route 10.35.44.0 255.255.255.0 172.26.1.2 name LJ544
+ip route 10.35.45.0 255.255.255.0 172.26.1.2 name LJ545
+ip route 10.35.52.0 255.255.255.0 172.26.1.2 name LJ552
+ip route 10.35.57.0 255.255.255.0 172.26.1.2 name LJ557
+ip route 10.35.58.0 255.255.255.0 172.26.1.2 name LJ558
+ip route 10.35.59.0 255.255.255.0 172.26.1.2 name LJ559
+ip route 10.35.73.0 255.255.255.0 172.26.1.2 name LJ573
+ip route 10.35.91.0 255.255.255.0 172.26.1.2 name LJ591
+ip route 10.43.85.0 255.255.255.0 172.26.1.2 name LJ385
+ip route 10.43.99.0 255.255.255.0 172.26.1.2 name LJ399
+ip route 10.44.6.0 255.255.255.0 172.26.1.2 name LJ406
+ip route 10.44.9.0 255.255.255.0 172.26.1.2 name LJ409
+ip route 10.44.14.0 255.255.255.0 172.26.1.2 name LJ414
+ip route 10.44.17.0 255.255.255.0 172.26.1.2 name LJ417
+ip route 10.44.26.0 255.255.255.0 172.26.1.2 name LJ426
+ip route 10.44.27.0 255.255.255.0 172.26.1.2 name LJ427
+ip route 10.45.38.0 255.255.255.0 172.26.1.2 name LJ538
+ip route 10.45.44.0 255.255.255.0 172.26.1.2 name LJ544
+ip route 10.45.45.0 255.255.255.0 172.26.1.2 name LJ545
+ip route 10.45.52.0 255.255.255.0 172.26.1.2 name LJ552
+ip route 10.45.57.0 255.255.255.0 172.26.1.2 name LJ557
+ip route 10.45.58.0 255.255.255.0 172.26.1.2 name LJ558
+ip route 10.45.59.0 255.255.255.0 172.26.1.2 name LJ559
+ip route 10.45.73.0 255.255.255.0 172.26.1.2 name LJ573
+ip route 10.45.91.0 255.255.255.0 172.26.1.2 name LJ591
+ip route 10.46.100.0 255.255.255.0 172.16.224.22 name GREY
+ip route 10.150.0.0 255.255.255.0 172.26.1.2 name NEREIDAS-MERAKI
+ip route 10.200.10.0 255.255.255.0 172.21.254.65
+ip route 10.200.50.0 255.255.255.0 172.21.254.65
+ip route 10.200.90.0 255.255.255.0 172.21.254.65
+ip route 10.200.94.0 255.255.255.0 172.21.254.65
+ip route 10.200.100.60 255.255.255.255 172.21.9.10 name CEVTSSAAPPRD01
+ip route 10.200.100.85 255.255.255.255 172.21.9.10 name CEVTSPNTPRD01
+ip route 10.200.110.0 255.255.255.0 172.21.254.65 name Impressoras-vlan110
+ip route 10.210.10.0 255.255.255.0 172.21.254.65 name DRC
+ip route 10.255.100.0 255.255.254.0 172.26.1.2 name VPN-MERAKI
+ip route 10.255.100.0 255.255.255.0 172.26.1.2 name VPN-MERAKI-SEDE
+ip route 10.255.110.0 255.255.255.0 172.26.1.2 name VPN-MERAKI-CD
+ip route 172.16.224.23 255.255.255.255 172.21.9.10 name CEVTSSQLDEV01
+ip route 172.16.224.46 255.255.255.255 172.21.9.10 name CEVTSPACKPRD02
+ip route 172.16.224.49 255.255.255.255 172.21.9.10 name CEVTSDNAHOM01
+ip route 172.16.224.95 255.255.255.255 172.21.9.10 name CEVTSSQLDEV02
+ip route 172.16.224.108 255.255.255.255 172.21.9.10 name CEVTSDNADEV01
+ip route 172.16.224.118 255.255.255.255 172.21.9.10 name CEVTSACESSPRD01
+ip route 172.16.224.119 255.255.255.255 172.21.9.10 name CEVTSDNAPRD1
+ip route 172.16.224.124 255.255.255.255 172.21.9.10 name CEVTSDNAHOM02
+ip route 172.16.224.182 255.255.255.255 172.21.9.10 name CEVTSMSAFPRD01
+ip route 172.16.225.49 255.255.255.255 172.21.9.10 name CEVTSSHPNTDEV01
+ip route 172.16.225.233 255.255.255.255 172.21.9.10 name CEVTSTEFWEBPRD01
+ip route 172.16.226.75 255.255.255.255 172.21.9.10 name CEVTSASKHLG01
+ip route 172.16.227.254 255.255.255.255 172.21.9.10 name CEVTSDNAPRD2
+ip route 172.16.246.0 255.255.255.252 172.16.224.111
+ip route 172.16.246.1 255.255.255.255 172.16.224.111 name Monitoracao_Conductor
+ip tacacs source-interface Loopback2
+!
+ip access-list extended controle_grey
+ permit icmp any any
+ permit tcp host 172.16.224.22 host 172.16.224.114 eq www 443
+ permit tcp 10.46.100.0 0.0.0.255 host 172.16.224.114 eq www 443 log-input
+ permit tcp 10.46.100.0 0.0.0.255 host 172.16.224.1 log-input
+ permit tcp 10.46.100.0 0.0.0.255 host 172.16.225.196 eq 5900
+ permit tcp 10.46.100.0 0.0.0.255 eq www 172.16.224.0 0.0.3.255
+ deny   ip any any log-input
+!
+ip sla 1
+ icmp-echo 172.21.121.100
+ip sla schedule 1 life forever start-time now
+ip sla reaction-configuration 1 react timeout threshold-type immediate
+ip sla enable reaction-alerts
+logging trap notifications
+logging 172.21.8.3
+logging 172.21.10.8
+access-list 10 permit any
+arp 10.200.100.80 0100.5e7f.6450 ARPA
+arp 172.16.224.71 03bf.ac10.e047 ARPA
+arp 172.21.8.66 80ee.7335.c513 ARPA
+arp 172.21.2.200 02bf.ac15.02c8 ARPA
+arp 172.16.224.10 0013.7241.b840 ARPA
+arp 172.21.1.40 03bf.ac15.0128 ARPA
+snmp-server community col@adm! RO
+snmp-server community col@lms!r RO
+snmp-server community col@lms!w RW
+snmp-server community Nereidas@CeV# RO
+snmp-server host 172.21.2.47 version 2c Nereidas@CeV#
+snmp-server host 172.21.2.48 version 2c Nereidas@CeV#
+tacacs-server directed-request
+tacacs server AAA_CeV
+ address ipv4 172.21.1.51
+ key 7 141616061805292A273B
+!
+!
+!
+banner login ^C
+*******************************************************************************
+          ____                   ___    __     ___     _
+         / ___|__ _ ___  __ _   ( _ )   \ \   / (_) __| | ___  ___
+        | |   / _` / __|/ _` |  / _ \/\  \ \ / /| |/ _` |/ _ \/ _ \
+        | |__| (_| \__ \ (_| | | (_>  <   \ V / | | (_| |  __/ (_) |
+         \____\__,_|___/\__,_|  \___/\/    \_/  |_|\__,_|\___|\___/
+
+                 Gerencia Geral de Tecnologia da Informacao                                       
+                                                                                                  
+ Warning! The use of this system is restricted to authorized users.
+ All information and communications on this system are subject to review,
+ monitoring and recording at any time, without notice or permission.
+ Unauthorized access or use shall be subject to prosecution.
+
+ Atencao! A utilizacao desse sistema e limitado a usuarios autorizados.
+ Todas as informacoes e comunicacoes sobre este sistema estao sujeitos ao
+ monitoramento e gravacao a qualquer momento, sem previo aviso ou autorizacao.
+ O Acesso ou uso nao autorizado estara sujeito as medidas legais.
+
+*******************************************************************************
+^C
+banner motd ^C
+ Bem-vindo, com grandes poderes vem grandes responsabilidades.
+ Welcome, with great power comes great responsibility.
+
+ Equipamento / Device: $(hostname)
+
+
+^C
+!
+line con 0
+ authorization exec ACS-AUTH
+ login authentication ACS-AUTH
+line vty 0 4
+ access-class 10 in
+ authorization exec ACS-AUTH
+ login authentication ACS-AUTH
+ length 0
+ transport input ssh
+line vty 5 15
+ access-class 10 in
+ authorization exec ACS-AUTH
+ login authentication ACS-AUTH
+ transport input ssh
+!
+ntp server 10.200.100.234
+mac address-table static 03bf.ac17.0114 vlan 710 interface Port-channel22 Port-channel23
+event manager applet TRACK-1
+ event ipsla operation-id 1 reaction-type timeout
+ action 0.1 cli command "enable"
+ action 0.2 cli command "clear arp-cache 172.21.121.100"
+!
+end

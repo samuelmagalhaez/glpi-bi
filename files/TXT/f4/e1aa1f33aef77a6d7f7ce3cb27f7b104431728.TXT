@@ -1,0 +1,1322 @@
+=~=~=~=~=~=~=~=~=~=~=~= PuTTY log 2021.02.12 23:35:40 =~=~=~=~=~=~=~=~=~=~=~=
+login as: cleydson; .santos
+cleydson.santos@189.112.215.57's password: 
+User cleydson.santos logged in to ASA-LJ-036
+Logins over the last 91 days: 16.  Last login: 23:34:54 BR Feb 12 2021 from 177.207.168.147
+Failed logins since the last login: 0.  
+Type help or '?' for a list of available commands.
+ASA-LJ-036> 
+ASA-LJ-036> 
+ASA-LJ-036> 
+ASA-LJ-036> 
+ASA-LJ-036> en
+Password: ********
+ASA-LJ-036# 
+ASA-LJ-036# 
+ASA-LJ-036# 
+ASA-LJ-036# sh run
+: Saved
+
+: 
+: Serial Number: JAD232903DS
+: Hardware:   ASA5506, 4096 MB RAM, CPU Atom C2000 series 1250 MHz, 1 CPU (4 cores)
+:
+ASA Version 9.10(1)22 
+!
+hostname ASA-LJ-036
+enable password ***** encrypted
+xlate per-session deny tcp any4 any4
+xlate per-session deny tcp any4 any6
+xlate per-session deny tcp any6 any4
+xlate per-session deny tcp any6 any6
+xlate per-session deny udp any4 any4 eq domain
+xlate per-session deny udp any4 any6 eq domain
+xlate per-session deny udp any6 any4 eq domain
+xlate per-session deny udp any6 any6 eq domain
+names
+no mac-address auto
+
+!
+interface GigabitEthernet1/1
+ nameif inside
+ security-level 100
+               ip address 10.36.1.26 255.255.255.0 
+!
+interface GigabitEthernet1/2
+ nameif mpls
+ security-level 100
+ ip address 172.30.36.1 255.255.255.248 
+!
+interface GigabitEthernet1/3
+ no nameif
+ no security-level
+ no ip address
+!
+interface GigabitEthernet1/4
+ no nameif
+ no security-level
+ no ip address
+!
+interface GigabitEthernet1/5
+ shutdown
+ no nameif
+ no security-level
+ no ip address
+!
+interface GigabitEthernet1/6
+               nameif outside-algar
+ security-level 0
+ ip address 189.112.215.57 255.255.255.252 
+!
+interface GigabitEthernet1/7
+ shutdown
+ no nameif
+ security-level 100
+ no ip address
+!
+interface GigabitEthernet1/8
+ shutdown
+ no nameif
+ no security-level
+ no ip address
+!
+interface Management1/1
+ management-only
+ nameif Management
+ security-level 100
+ ip address 192.168.1.1 255.255.255.0 
+!
+interface BVI1
+ no nameif
+               no security-level
+ no ip address
+!
+boot system disk0:/asa9-10-1-22-lfbff-k8.SPA
+ftp mode passive
+clock timezone BR -3
+clock summer-time BR date Nov 4 2018 0:00 Feb 16 2019 0:00
+dns domain-lookup inside
+dns server-group DefaultDNS
+ name-server 172.22.22.20 outside-algar
+ name-server 10.200.9.3 outside-algar
+ name-server 10.200.9.4 outside-algar
+same-security-traffic permit inter-interface
+same-security-traffic permit intra-interface
+object network obj_any1
+ subnet 0.0.0.0 0.0.0.0
+object network obj_any2
+ subnet 0.0.0.0 0.0.0.0
+object network obj_any3
+ subnet 0.0.0.0 0.0.0.0
+object network obj_any4
+ subnet 0.0.0.0 0.0.0.0
+object network obj_any5
+ subnet 0.0.0.0 0.0.0.0
+              object network obj_any6
+ subnet 0.0.0.0 0.0.0.0
+object network obj_any7
+ subnet 0.0.0.0 0.0.0.0
+object network obj_any
+ subnet 0.0.0.0 0.0.0.0
+object network GW_MPLS_OI
+ host 172.30.36.2
+object network Rede_LJ036
+ subnet 10.36.1.0 255.255.255.0
+object network pool.ntp.br
+ fqdn v4 pool.ntp.br
+object network a23-57-149-69.deploy.static.akamaitechnologies.com
+ fqdn v4 a23-57-149-69.deploy.static.akamaitechnologies.com
+object service tcp_5353
+ service tcp destination eq 5353 
+object network ssl.vip.automatos.com
+ fqdn v4 ssl.vip.automatos.com
+object service tcp_5060
+ service tcp destination eq sip 
+object service udp_5060
+ service udp destination eq sip 
+object service udp_1000-65535
+ service udp destination range 1000 65535 
+              object service tcp_5017
+ service tcp destination eq 5017 
+object service tcp_5022
+ service tcp destination eq 5022 
+object service tcp_1733
+ service tcp destination eq 1733 
+object network Rede_Card_2
+ subnet 172.20.1.0 255.255.255.0
+object network Rede_Card_1
+ subnet 10.200.0.0 255.255.0.0
+object network Rede_T-System_1
+ subnet 10.190.4.0 255.255.254.0
+object network Rede_T-System_2
+ subnet 10.204.0.0 255.255.0.0
+object network Rede_ADM_SRV
+ subnet 192.168.160.0 255.255.255.0
+object network Rede_CSC
+ subnet 172.21.0.0 255.255.0.0
+object network Rede_ADM
+ subnet 172.22.0.0 255.255.0.0
+object service tcp_8080
+ service tcp destination eq 8080 
+object network Proxy_1
+ host 10.200.2.100
+              object network Proxy_2
+ host 10.200.2.226
+object network Rede_Soft-Express
+ subnet 172.25.55.0 255.255.255.248
+object network Rede_Card_3
+ subnet 172.17.0.0 255.255.0.0
+object network Rede_Matrix_1
+ subnet 10.206.0.0 255.255.0.0
+object network Proxy_3
+ host 10.200.2.79
+object network Proxy_4
+ host 172.22.22.6
+object network CFTV_1
+ host 10.36.1.234
+object network CFTV_2
+ host 10.36.1.235
+object network CFTV_3
+ host 10.36.1.236
+object network Estacao_Monitoramento_G4S
+ host 10.36.1.240
+object network corp.g4s.net.br
+ host 177.69.4.170
+object network mgmt_AMP01
+ host 52.4.98.101
+              object network mgmt_AMP02
+ host 52.70.59.59
+object network mgmt_AMP03
+ host 52.23.73.146
+object network mgmt_AMP04
+ host 54.225.228.145
+object network mgmt_AMP05
+ host 54.225.228.166
+object network intake_AMP01
+ host 52.3.149.24
+object network intake_AMP02
+ host 52.70.35.37
+object network cloud-ec-est_AMP01
+ host 50.16.244.193
+object network cloud-ec-est_AMP02
+ host 54.221.210.7
+object network cloud-ec-asn_AMP01
+ host 52.70.47.45
+object network cloud-ec-asn_AMP02
+ host 52.70.11.137
+object network cloud-ec-asn_AMP03
+ host 52.3.190.47
+object network cloud-ec-asn_AMP04
+ host 52.70.59.121
+              object network cloud-ec-asn_AMP05
+ host 52.6.103.57
+object network cloud-ec-asn_AMP06
+ host 52.23.16.199
+object network cloud-ec-asn_AMP07
+ host 52.23.13.34
+object network cloud-ec-asn_AMP08
+ host 52.70.63.25
+object network policy_AMP01
+ host 52.4.151.41
+object network policy_AMP02
+ host 54.88.208.235
+object network tetra-defs_AMP01
+ host 52.3.178.163
+object network tetra-defs_AMP02
+ host 52.23.87.4
+object network tetra-defs_AMP03
+ host 54.225.227.105
+object network android_AMP01
+ host 34.206.2.164
+object network android_AMP02
+ host 52.71.51.34
+object network android_AMP03
+ host 52.200.72.177
+              object network api_AMP01
+ host 34.233.131.207
+object network api_AMP02
+ host 52.1.250.0
+object network api_AMP03
+ host 54.209.119.76
+object network clam-defs_AMP01
+ host 52.70.61.193
+object network clam-defs_AMP02
+ host 52.5.92.125
+object network cloud-dc_AMP01
+ host 107.22.218.180
+object network cloud-dc_AMP02
+ host 107.20.155.82
+object network cloud-dc_AMP03
+ host 23.21.230.109
+object network cloud-dc_AMP04
+ host 50.17.207.230
+object network cloud-dc_AMP05
+ host 54.243.248.19
+object network cloud-dc_AMP06
+ host 174.129.10.75
+object network cloud-ec-asn_AMP09
+ host 52.23.16.199
+              object network cloud-ec-asn_AMP10
+ host 52.70.47.45
+object network cloud-ec-asn_AMP11
+ host 52.3.190.47
+object network cloud-ec-asn_AMP12
+ host 52.70.63.25
+object network cloud-ec-asn_AMP13
+ host 52.70.11.137
+object network cloud-ec-asn_AMP14
+ host 52.23.13.34
+object network cloud-ec-asn_AMP15
+ host 52.70.59.121
+object network cloud-ec-asn_AMP16
+ host 52.6.103.57
+object network cloud-ec-est_AMP03
+ host 54.221.210.7
+object network cloud-ec-est_AMP04
+ host 50.16.244.193
+object network cloud-ec_AMP01
+ host 52.20.123.238
+object network cloud-ec_AMP02
+ host 52.22.156.183
+object network cloud-ec_AMP03
+ host 52.4.245.162
+              object network cloud-ios-asn_AMP01
+ host 52.70.60.74
+object network cloud-ios-est_AMP01
+ host 54.225.226.117
+object network cloud-ios-est_AMP02
+ host 107.20.203.8
+object network cloud-ios-est_AMP03
+ host 107.21.212.157
+object network cloud-meraki-asn_AMP01
+ host 34.199.238.4
+object network cloud-meraki-asn_AMP02
+ host 52.206.206.244
+object network cloud-meraki-asn_AMP03
+ host 34.225.208.192
+object network cloud-meraki-asn_AMP04
+ host 34.198.112.150
+object network cloud-meraki-asn_AMP05
+ host 34.199.250.32
+object network cloud-meraki-asn_AMP06
+ host 52.22.120.193
+object network cloud-meraki-asn_AMP07
+ host 34.194.224.132
+object network cloud-meraki-asn_AMP08
+ host 34.224.236.198
+              object network cloud-meraki-est_AMP01
+ host 107.20.234.220
+object network cloud-meraki-est_AMP02
+ host 107.20.229.191
+object network cloud-pc-asn_AMP01
+ host 52.21.52.149
+object network cloud-pc-est_AMP01
+ host 54.161.128.60
+object network cloud-pc-est_AMP02
+ host 54.234.131.176
+object network cloud-pc_AMP01
+ host 52.6.197.200
+object network cloud-pc-sf_AMP01
+ host 184.72.229.18
+object network cloud-pc-sf_AMP02
+ host 174.129.210.64
+object network cloud-sa_AMP01
+ host 52.21.117.50
+object network cloud-sa-sf_AMP01
+ host 54.243.153.61
+object network cloud-sa-sf_AMP02
+ host 50.16.250.236
+object network cloud-sa-sf_AMP03
+ host 50.16.248.84
+              object network console_AMP01
+ host 52.22.64.192
+object network console_AMP02
+ host 52.2.128.246
+object network crash_AMP01
+ host 52.20.14.163
+object network crash_AMP02
+ host 52.20.141.147
+object network custom-sig_AMP01
+ host 54.88.208.235
+object network custom-sig_AMP02
+ host 52.4.151.41
+object network export_AMP01
+ host 23.23.198.19
+object network export_AMP02
+ host 23.23.197.169
+object network intake_AMP03
+ host 52.23.73.146
+object network intake_AMP04
+ host 52.4.98.101
+object network ioc_AMP01
+ host 54.88.208.235
+object network ioc_AMP02
+ host 52.4.151.41
+              object network packages-v2_AMP01
+ host 54.173.212.233
+object network packages-v2_AMP02
+ host 34.235.24.0
+object network packages_AMP01
+ host 52.55.177.165
+object network packages_AMP02
+ host 34.224.154.139
+object network pc-packages_AMP01
+ host 52.21.134.210
+object network policy_AMP03
+ host 52.4.151.41
+object network policy_AMP04
+ host 54.88.208.235
+object network rff_AMP01
+ host 52.23.140.222
+object network upgrades_AMP01
+ host 54.88.208.235
+object network upgrades_AMP02
+ host 52.4.151.41
+object network SEFAZ_MG
+ host 201.16.234.33
+object network SEFAZ_RS
+ host 200.233.4.151
+              object network SEFAZ_Virtual_SVRS_1
+ host 200.233.14.149
+object network SEFAZ_Virtual_SVRS_2
+ host 200.233.4.149
+object network SEFAZ_RS_PROCERGS_1
+ subnet 200.189.128.0 255.255.224.0
+object network SEFAZ_RS_PROCERGS_2
+ subnet 200.189.134.0 255.255.255.0
+object network SEFAZ_RS_PROCERGS_3
+ subnet 200.189.136.0 255.255.252.0
+object network SEFAZ_RS_PROCERGS_4
+ subnet 200.189.139.0 255.255.255.0
+object network SEFAZ_RS_PROCERGS_5
+ subnet 200.189.150.0 255.255.255.0
+object network SEFAZ_RS_PROCERGS_6
+ subnet 200.198.128.0 255.255.224.0
+object network SEFAZ_RS_PROCERGS_7
+ subnet 200.198.137.0 255.255.255.0
+object network SEFAZ_RS_PROCERGS_8
+ subnet 200.198.156.0 255.255.254.0
+object network SEFAZ_RS_PROCERGS_9
+ subnet 200.198.160.0 255.255.240.0
+object network SEFAZ_RS_PROCERGS_10
+ subnet 200.198.165.0 255.255.255.0
+              object network SEFAZ_RS_PROCERGS_11
+ subnet 200.233.0.0 255.255.254.0
+object network SEFAZ_RS_PROCERGS_12
+ subnet 200.233.10.0 255.255.254.0
+object network SEFAZ_RS_PROCERGS_13
+ subnet 200.233.12.0 255.255.254.0
+object network SEFAZ_RS_PROCERGS_14
+ subnet 200.233.12.0 255.255.255.0
+object network SEFAZ_RS_PROCERGS_15
+ subnet 200.233.14.0 255.255.254.0
+object network SEFAZ_RS_PROCERGS_16
+ subnet 200.233.15.0 255.255.255.0
+object network SEFAZ_RS_PROCERGS_17
+ subnet 200.233.2.0 255.255.254.0
+object network SEFAZ_RS_PROCERGS_18
+ subnet 200.233.4.0 255.255.254.0
+object network SEFAZ_RS_PROCERGS_19
+ subnet 200.233.6.0 255.255.254.0
+object network SEFAZ_RS_PROCERGS_20
+ subnet 200.233.8.0 255.255.254.0
+object network Rede_ADM_SERV2
+ subnet 172.22.22.0 255.255.255.0
+object network Rede_ADM_TiP
+ subnet 172.22.110.0 255.255.255.0
+              object network File_Server_vmldmcfs01
+ host 172.22.22.22
+object network Host_Leandro_Suporte_TI
+ host 172.22.2.35
+object network Host_Felipe_Suporte_TI
+ host 172.22.2.37
+object network Host_AndersonCosta_Suporte_TI
+ host 172.22.1.180
+object network Host_Marcio_Suporte_TI
+ host 172.22.1.53
+object network Host_Marcelo_Suporte_TI
+ host 172.22.2.47
+object network Host_Joana_Suporte_TI
+ host 172.22.1.162
+object network Host_Eloisio_Suporte_TI
+ host 172.22.1.11
+object network Host_Alessandro_Suporte_TI
+ host 172.22.1.168
+object network Host_Paulo_Suporte_TI
+ host 172.22.1.183
+object network Host_Sabino_Suporte_TI
+ host 172.22.1.129
+object network Host_EduardoMota_Suporte_TI
+ host 172.22.1.137
+              object network Host_Antoniojunior_Suporte_TI
+ host 172.22.1.48
+object network ec2-52-45-234-187.compute-1.amazonaws.com
+ host 52.45.234.187
+object network ec2-54-84-203-207.compute-1.amazonaws.com
+ host 54.84.203.207
+object network SRV_TACACS_2
+ host 172.22.22.61
+object network SRV_TACACS_1
+ host 172.22.22.60
+object network Rede_Bradescard
+ subnet 192.168.83.0 255.255.255.0
+object network Host_RJO-3805200196
+ host 172.22.1.203
+object network FQDN_G4S
+ fqdn v4 corp.g4s.net.br
+ description FQDN para utilizacao g4s
+object network Host_CarlosGameiro_Suporte_TI
+ host 172.22.1.26
+object network Host_Washington_Suporte_TI
+ host 172.22.1.250
+object network Host_Alan_Suporte_TI
+ host 172.22.1.203
+object network Host_Lucas_Suporte_TI
+               host 172.22.1.58
+object network Host_Serv_Leader78
+ host 172.22.22.78
+object network 192.168.160.77
+ host 192.168.160.77
+object network Rede_Matrix
+ subnet 10.206.0.0 255.255.0.0
+object network Central_Alarme
+ host 10.36.1.239
+object network 200.149.45.114
+ host 200.149.45.114
+object network 201.57.9.66
+ host 201.57.9.66
+object network 172.22.1.26
+ host 172.22.1.26
+object network 172.22.201.21
+ host 172.22.201.21
+object network Host_172.22.1.20
+ host 172.22.1.20
+object network Host_Anderson_Suporte_TI
+ host 72.22.230.158
+object network Host_LucasSarmento_Suporte_TI
+ host 172.22.230.82
+object network Host_Filipe_Suporte_TI
+               host 172.22.230.167
+object network Rede_VPN02
+ subnet 172.22.230.0 255.255.255.0
+object network GrennAnt_01
+ host 54.157.6.169
+object network 52.203.196.211
+ host 52.203.196.211
+object network 52.4.106.226
+ host 52.4.106.226
+object network Rede_Nereidas
+ subnet 10.254.0.0 255.255.0.0
+object network Rede_Nereidas_2
+ subnet 172.31.200.0 255.255.255.0
+object-group network Redes_Matrix
+ network-object object Rede_Matrix
+ network-object object Rede_Soft-Express
+ network-object object Rede_Bradescard
+object-group network Redes_Sede
+ network-object object Rede_ADM
+ network-object object Rede_Card_1
+ network-object object Rede_Card_2
+ network-object object Rede_Card_3
+ network-object object Rede_ADM_SRV
+object-group network DM_INLINE_NETWORK_1
+               group-object Redes_Matrix
+ group-object Redes_Sede
+object-group service DM_INLINE_SERVICE_1
+ service-object tcp destination eq domain 
+ service-object tcp destination eq https 
+ service-object object tcp_5353 
+ service-object udp destination eq domain 
+ service-object udp destination eq ntp 
+object-group service DM_INLINE_SERVICE_2
+ service-object object tcp_5060 
+ service-object object udp_5060 
+object-group service DM_INLINE_SERVICE_3
+ service-object object tcp_5060 
+ service-object object udp_1000-65535 
+ service-object object udp_5060 
+object-group service DM_INLINE_SERVICE_4
+ service-object object tcp_5060 
+ service-object object udp_5060 
+object-group service DM_INLINE_SERVICE_5
+ service-object object tcp_5060 
+ service-object object udp_5060 
+object-group service DM_INLINE_SERVICE_6
+ service-object object tcp_5060 
+ service-object object udp_1000-65535 
+               service-object object udp_5060 
+object-group service DM_INLINE_SERVICE_7
+ service-object object tcp_5060 
+ service-object object udp_1000-65535 
+ service-object object udp_5060 
+object-group service DM_INLINE_SERVICE_8
+ service-object object tcp_5017 
+ service-object object tcp_5022 
+object-group network DM_INLINE_NETWORK_12
+ network-object object Rede_T-System_1
+ network-object object Rede_Card_2
+ network-object object Rede_CSC
+ network-object object Rede_T-System_2
+ network-object object Rede_Card_1
+ network-object object Rede_ADM
+ network-object object Rede_ADM_SRV
+object-group service DM_INLINE_SERVICE_16
+ service-object ip 
+ service-object icmp 
+ service-object icmp echo-reply
+object-group service DM_INLINE_SERVICE_17
+ service-object ip 
+ service-object icmp 
+ service-object icmp echo-reply
+              object-group service DM_INLINE_SERVICE_18
+ service-object icmp 
+ service-object udp destination eq domain 
+object-group service DM_INLINE_SERVICE_19
+ service-object tcp destination eq domain 
+ service-object tcp destination eq https 
+ service-object object tcp_5353 
+ service-object udp destination eq domain 
+ service-object udp destination eq ntp 
+object-group service DM_INLINE_SERVICE_20
+ service-object object tcp_5060 
+ service-object object udp_5060 
+object-group service DM_INLINE_SERVICE_21
+ service-object object tcp_5060 
+ service-object object udp_1000-65535 
+ service-object object udp_5060 
+object-group service DM_INLINE_SERVICE_22
+ service-object object tcp_5017 
+ service-object object tcp_5022 
+object-group service DM_INLINE_SERVICE_25
+ service-object icmp 
+ service-object icmp echo-reply
+ service-object ip 
+object-group protocol DM_INLINE_PROTOCOL_1
+               protocol-object ip
+ protocol-object icmp
+object-group network DM_INLINE_NETWORK_2
+ network-object object CFTV_1
+ network-object object CFTV_2
+ network-object object CFTV_3
+object-group service Port_9803_G4S tcp-udp
+ port-object eq 9803
+object-group protocol TCPUDP
+ protocol-object udp
+ protocol-object tcp
+object-group network Cisco_AMP
+ network-object object cloud-ec-asn_AMP01
+ network-object object cloud-ec-asn_AMP02
+ network-object object cloud-ec-asn_AMP03
+ network-object object cloud-ec-asn_AMP04
+ network-object object cloud-ec-asn_AMP05
+ network-object object cloud-ec-asn_AMP06
+ network-object object cloud-ec-asn_AMP07
+ network-object object cloud-ec-asn_AMP08
+ network-object object cloud-ec-est_AMP01
+ network-object object cloud-ec-est_AMP02
+ network-object object intake_AMP01
+ network-object object intake_AMP02
+               network-object object mgmt_AMP01
+ network-object object mgmt_AMP02
+ network-object object mgmt_AMP03
+ network-object object policy_AMP01
+ network-object object policy_AMP02
+ network-object object tetra-defs_AMP01
+ network-object object tetra-defs_AMP02
+ network-object object tetra-defs_AMP03
+ network-object object mgmt_AMP04
+ network-object object mgmt_AMP05
+ network-object object android_AMP01
+ network-object object android_AMP02
+ network-object object android_AMP03
+ network-object object api_AMP01
+ network-object object api_AMP02
+ network-object object api_AMP03
+ network-object object clam-defs_AMP01
+ network-object object clam-defs_AMP02
+ network-object object cloud-dc_AMP01
+ network-object object cloud-dc_AMP02
+ network-object object cloud-dc_AMP03
+ network-object object cloud-dc_AMP04
+ network-object object cloud-dc_AMP05
+ network-object object cloud-dc_AMP06
+               network-object object cloud-ec-asn_AMP09
+ network-object object cloud-ec-asn_AMP10
+ network-object object cloud-ec-asn_AMP11
+ network-object object cloud-ec-asn_AMP12
+ network-object object cloud-ec-asn_AMP13
+ network-object object cloud-ec-asn_AMP14
+ network-object object cloud-ec-asn_AMP15
+ network-object object cloud-ec-asn_AMP16
+ network-object object cloud-ec-est_AMP03
+ network-object object cloud-ec-est_AMP04
+ network-object object cloud-ec_AMP01
+ network-object object cloud-ec_AMP02
+ network-object object cloud-ec_AMP03
+ network-object object cloud-ios-asn_AMP01
+ network-object object cloud-ios-est_AMP01
+ network-object object cloud-ios-est_AMP02
+ network-object object cloud-ios-est_AMP03
+ network-object object cloud-meraki-asn_AMP01
+ network-object object cloud-meraki-asn_AMP02
+ network-object object cloud-meraki-asn_AMP03
+ network-object object cloud-meraki-asn_AMP04
+ network-object object cloud-meraki-asn_AMP05
+ network-object object cloud-meraki-asn_AMP06
+ network-object object cloud-meraki-asn_AMP07
+               network-object object cloud-meraki-asn_AMP08
+ network-object object cloud-meraki-est_AMP01
+ network-object object cloud-meraki-est_AMP02
+ network-object object cloud-pc-asn_AMP01
+ network-object object cloud-pc-est_AMP01
+ network-object object cloud-pc-est_AMP02
+ network-object object cloud-pc-sf_AMP01
+ network-object object cloud-pc-sf_AMP02
+ network-object object cloud-pc_AMP01
+ network-object object cloud-sa-sf_AMP01
+ network-object object cloud-sa-sf_AMP02
+ network-object object cloud-sa-sf_AMP03
+ network-object object cloud-sa_AMP01
+ network-object object console_AMP01
+ network-object object console_AMP02
+ network-object object crash_AMP01
+ network-object object crash_AMP02
+ network-object object custom-sig_AMP01
+ network-object object custom-sig_AMP02
+ network-object object export_AMP01
+ network-object object export_AMP02
+ network-object object intake_AMP03
+ network-object object intake_AMP04
+ network-object object ioc_AMP01
+               network-object object ioc_AMP02
+ network-object object packages-v2_AMP01
+ network-object object packages-v2_AMP02
+ network-object object packages_AMP01
+ network-object object packages_AMP02
+ network-object object pc-packages_AMP01
+ network-object object policy_AMP03
+ network-object object policy_AMP04
+ network-object object rff_AMP01
+ network-object object upgrades_AMP01
+ network-object object upgrades_AMP02
+object-group network Redes_Leader
+ network-object object Rede_ADM
+ network-object object Rede_Card_1
+ network-object object Rede_Card_2
+ network-object object Rede_Card_3
+ network-object object Rede_Matrix_1
+ network-object object Rede_Soft-Express
+ network-object object Rede_CSC
+ network-object object Rede_T-System_1
+ network-object object Rede_T-System_2
+ network-object object Rede_Bradescard
+ network-object object Rede_ADM_SRV
+ network-object object Rede_Nereidas
+               network-object object Rede_Nereidas_2
+object-group service Portas_SEFAZ
+ service-object tcp-udp destination eq www 
+ service-object tcp destination eq https 
+object-group network SEFAZ_BR
+ network-object object SEFAZ_MG
+ network-object object SEFAZ_RS
+ network-object object SEFAZ_Virtual_SVRS_1
+ network-object object SEFAZ_Virtual_SVRS_2
+ network-object object SEFAZ_RS_PROCERGS_1
+ network-object object SEFAZ_RS_PROCERGS_10
+ network-object object SEFAZ_RS_PROCERGS_11
+ network-object object SEFAZ_RS_PROCERGS_12
+ network-object object SEFAZ_RS_PROCERGS_13
+ network-object object SEFAZ_RS_PROCERGS_14
+ network-object object SEFAZ_RS_PROCERGS_15
+ network-object object SEFAZ_RS_PROCERGS_16
+ network-object object SEFAZ_RS_PROCERGS_17
+ network-object object SEFAZ_RS_PROCERGS_18
+ network-object object SEFAZ_RS_PROCERGS_19
+ network-object object SEFAZ_RS_PROCERGS_2
+ network-object object SEFAZ_RS_PROCERGS_20
+ network-object object SEFAZ_RS_PROCERGS_3
+ network-object object SEFAZ_RS_PROCERGS_4
+               network-object object SEFAZ_RS_PROCERGS_5
+ network-object object SEFAZ_RS_PROCERGS_6
+ network-object object SEFAZ_RS_PROCERGS_7
+ network-object object SEFAZ_RS_PROCERGS_8
+ network-object object SEFAZ_RS_PROCERGS_9
+object-group network Grp_Hosts_Suporte_TI
+ network-object object Host_Felipe_Suporte_TI
+ network-object object Host_AndersonCosta_Suporte_TI
+ network-object object Host_Joana_Suporte_TI
+ network-object object Host_Eloisio_Suporte_TI
+ network-object object Host_Paulo_Suporte_TI
+ network-object object Host_Sabino_Suporte_TI
+ network-object object Host_EduardoMota_Suporte_TI
+ network-object object Host_Antoniojunior_Suporte_TI
+ network-object object Host_RJO-3805200196
+ network-object object Host_Marcelo_Suporte_TI
+ network-object object Host_Marcio_Suporte_TI
+ network-object object Host_Leandro_Suporte_TI
+ network-object object Host_Alessandro_Suporte_TI
+ network-object object Host_Washington_Suporte_TI
+ network-object object Host_Lucas_Suporte_TI
+ network-object object Host_Alan_Suporte_TI
+ network-object object Host_CarlosGameiro_Suporte_TI
+ network-object object Host_Serv_Leader78
+               network-object object 172.22.1.26
+ network-object object 172.22.201.21
+ network-object object Host_172.22.1.20
+ network-object object Host_Anderson_Suporte_TI
+ network-object object Host_LucasSarmento_Suporte_TI
+ network-object object Host_Filipe_Suporte_TI
+ network-object object Rede_VPN02
+object-group network DM_INLINE_NETWORK_3
+ network-object object Rede_ADM_SERV2
+ network-object object Rede_ADM_TiP
+ group-object Grp_Hosts_Suporte_TI
+ network-object object 192.168.160.77
+ network-object object 200.149.45.114
+ network-object object 201.57.9.66
+object-group network DM_INLINE_NETWORK_4
+ network-object object Rede_ADM_SERV2
+ network-object object Rede_ADM_TiP
+ group-object Grp_Hosts_Suporte_TI
+ network-object object 192.168.160.77
+object-group network DM_INLINE_NETWORK_5
+ network-object object Rede_ADM
+ network-object object Rede_Card_1
+ network-object object Rede_ADM_SRV
+object-group network DM_INLINE_NETWORK_6
+               network-object object Rede_ADM
+ network-object object Rede_Card_1
+ network-object object Rede_ADM_SRV
+object-group service Portas_GrennAnt
+ service-object tcp destination eq www 
+ service-object tcp destination eq https 
+ service-object udp destination eq ntp 
+ service-object tcp-udp destination eq 25 
+ service-object tcp-udp destination eq 31 
+ service-object tcp-udp destination eq 89 
+ service-object tcp-udp destination eq 1080 
+object-group network Medidor_GrennAnt
+ network-object object ec2-52-45-234-187.compute-1.amazonaws.com
+ network-object object ec2-54-84-203-207.compute-1.amazonaws.com
+ network-object host 18.235.240.49
+ network-object host 54.210.204.217
+ network-object object 52.203.196.211
+ network-object object 52.4.106.226
+object-group network Grp_G4S
+ description utilizado pela g4s
+ network-object object FQDN_G4S
+ network-object object corp.g4s.net.br
+object-group network DM_INLINE_NETWORK_7
+ network-object object CFTV_1
+               network-object object CFTV_2
+ network-object object CFTV_3
+access-list mpls_oi_access_in remark Regra liberando SEFAZ sem necessidade de passar pelo proxy
+access-list mpls_oi_access_in extended permit object-group Portas_SEFAZ object-group SEFAZ_BR object Rede_LJ036 
+access-list mpls_oi_access_in remark Regra permitindo acesso da loja as redes da Leader
+access-list mpls_oi_access_in extended permit ip object-group Redes_Leader object Rede_LJ036 
+access-list mpls_oi_access_in remark Regra permitindo a loja acessar o Cisco AMP
+access-list mpls_oi_access_in extended permit ip object-group Cisco_AMP object Rede_LJ036 
+access-list mpls_oi_access_in remark Regra liberando acesso para monitoramento para GrennAnt
+access-list mpls_oi_access_in extended permit object-group Portas_GrennAnt object-group Medidor_GrennAnt object Rede_LJ036 
+access-list mpls_oi_access_in extended permit ip object-group Grp_G4S object Estacao_Monitoramento_G4S 
+access-list mpls_oi_access_in remark Regra liberando acesso a qualquer NTP
+access-list mpls_oi_access_in extended permit udp any any eq ntp 
+access-list inside_access_in_1 extended permit object-group Portas_SEFAZ object Rede_LJ036 object-group SEFAZ_BR 
+access-list inside_access_in_1 extended permit ip object Rede_LJ036 object-group Redes_Leader 
+access-list inside_access_in_1 extended permit ip object Rede_LJ036 object-group Cisco_AMP 
+access-list inside_access_in_1 remark Regra liberando acesso para monitoramento para GrennAnt
+access-list inside_access_in_1 extended permit object-group Portas_GrennAnt object Rede_LJ036 object-group Medidor_GrennAnt 
+access-list inside_access_in_1 remark Regra criada para liberar a central de alarmes na internet.
+access-list inside_access_in_1 extended permit ip object Central_Alarme any log notifications 
+access-list inside_access_in_1 extended permit ip object Estacao_Monitoramento_G4S object-group Grp_G4S 
+access-list inside_access_in_1 remark Regra liberando acesso a qualquer NTP
+access-list inside_access_in_1 extended permit udp any any eq ntp 
+access-list inside_access_in_1 remark Regra criada para liberar a central de alarmes na internet.
+              access-list acl-CB_PROXY extended permit ip object Proxy_1 any 
+access-list acl-CB_PROXY extended permit ip any object Proxy_1 
+access-list acl-CB_PROXY extended permit ip object Proxy_2 any 
+access-list acl-CB_PROXY extended permit ip any object Proxy_2 
+access-list acl-CB_PROXY extended permit ip object Proxy_3 any 
+access-list acl-CB_PROXY extended permit ip any object Proxy_3 
+access-list acl-CB_PROXY extended permit ip object Proxy_4 any 
+access-list acl-CB_PROXY extended permit ip any object Proxy_4 
+access-list acl-CB_CFTV extended permit ip object CFTV_1 any 
+access-list acl-CB_CFTV extended permit ip any object CFTV_1 
+access-list acl-CB_CFTV extended permit ip object CFTV_2 any 
+access-list acl-CB_CFTV extended permit ip any object CFTV_2 
+access-list acl-CB_CFTV extended permit ip object CFTV_3 any 
+access-list acl-CB_CFTV extended permit ip any object CFTV_3 
+access-list mpls_ebt_access_in remark Regra liberando SEFAZ sem necessidade de passar pelo proxy
+access-list mpls_ebt_access_in extended permit object-group Portas_SEFAZ object-group SEFAZ_BR object Rede_LJ036 
+access-list mpls_ebt_access_in remark Regra permitindo acesso da loja as redes da Leader
+access-list mpls_ebt_access_in extended permit ip object-group Redes_Leader object Rede_LJ036 
+access-list mpls_ebt_access_in remark Regra permitindo a loja acessar o Cisco AMP
+access-list mpls_ebt_access_in extended permit ip object-group Cisco_AMP object Rede_LJ036 
+access-list mpls_ebt_access_in remark Regra liberando acesso para monitoramento para GrennAnt
+access-list mpls_ebt_access_in extended permit object-group Portas_GrennAnt object-group Medidor_GrennAnt object Rede_LJ036 
+access-list mpls_ebt_access_in extended permit ip object-group Grp_G4S object Estacao_Monitoramento_G4S 
+access-list mpls_ebt_access_in remark Regra liberando acesso a qualquer NTP
+              access-list mpls_ebt_access_in extended permit udp any any eq ntp 
+access-list mpls_oi_mpc extended permit object-group TCPUDP object Estacao_Monitoramento_G4S object corp.g4s.net.br object-group Port_9803_G4S 
+access-list inside_access_in remark Regra permitindo acesso da loja as redes da Leader
+access-list inside_access_in extended permit ip object Rede_LJ036 object-group Redes_Leader 
+access-list inside_access_in remark Regra permitindo a loja acessar o Cisco AMP
+access-list inside_access_in extended permit ip object Rede_LJ036 object-group Cisco_AMP 
+access-list inside_access_in remark Regra liberando SEFAZ sem necessidade de passar pelo proxy
+access-list inside_access_in extended permit ip object Rede_LJ036 object-group SEFAZ_BR 
+access-list inside_access_in extended permit ip any any 
+access-list mpls_ebt_mpc_2 extended permit ip object Rede_LJ036 object File_Server_vmldmcfs01 
+access-list mpls_ebt_mpc_2 extended permit ip object File_Server_vmldmcfs01 object Rede_LJ036 
+access-list mpls_ebt_mpc_1 extended permit ip object Rede_LJ036 object-group DM_INLINE_NETWORK_5 
+access-list mpls_ebt_mpc_1 extended permit ip object-group DM_INLINE_NETWORK_6 object Rede_LJ036 
+access-list mpls_ebt_mpc extended permit ip object Rede_LJ036 object-group DM_INLINE_NETWORK_3 
+access-list mpls_ebt_mpc extended permit ip object-group DM_INLINE_NETWORK_4 object Rede_LJ036 
+access-list global_mpc_1 extended permit ip any any 
+access-list outside-intnet_access_in extended permit icmp any any 
+access-list outside-intnet_access_in extended permit icmp any object Rede_LJ036 
+access-list outside-intnet_access_in_1 extended permit icmp any any 
+access-list outside-intnet_access_in_1 remark Regra Permitindo a Sede chegar na Loja
+access-list outside-intnet_access_in_1 extended permit ip object-group DM_INLINE_NETWORK_3 any 
+access-list outside-intnet_access_in_1 remark Regra liberando acesso para monitoramento para GrennAnt
+access-list outside-intnet_access_in_1 extended permit object-group Portas_GrennAnt object-group Medidor_GrennAnt object Rede_LJ036 log notifications 
+access-list outside-intnet_access_in_1 remark Regra criada para liberar a central de alarmes na internet.
+              access-list outside-intnet_access_in_1 extended permit ip any object Central_Alarme log notifications 
+access-list outside-intnet_cryptomap extended permit ip object Rede_LJ036 object-group Redes_Sede 
+access-list outside-intnet_cryptomap_1 extended permit ip object Rede_LJ036 object-group Redes_Matrix 
+access-list mpls_access_in extended permit ip object-group Redes_Leader object Rede_LJ036 
+access-list mpls_access_in extended permit ip object-group Cisco_AMP object Rede_LJ036 
+access-list mpls_access_in extended permit object-group Portas_GrennAnt object-group Medidor_GrennAnt object Rede_LJ036 
+access-list mpls_access_in extended permit ip any object Central_Alarme 
+access-list mpls_access_in extended permit ip object-group Grp_G4S object Estacao_Monitoramento_G4S 
+access-list mpls_access_in extended permit object-group Portas_SEFAZ object-group SEFAZ_BR object Rede_LJ036 
+access-list mpls_mpc extended permit ip object-group DM_INLINE_NETWORK_7 any 
+access-list mpls_mpc extended permit ip any object-group DM_INLINE_NETWORK_2 
+pager lines 24
+logging enable
+logging timestamp
+logging emblem
+logging monitor informational
+logging buffered notifications
+logging trap informational
+logging asdm informational
+logging queue 1024
+mtu inside 1500
+mtu outside-algar 1500
+mtu Management 1500
+mtu mpls 1500
+              icmp unreachable rate-limit 1 burst-size 1
+icmp permit any inside
+asdm image disk0:/asdm-openjre-7122.bin
+no asdm history enable
+arp timeout 14400
+no arp permit-nonconnected
+arp rate-limit 16384
+nat (inside,outside-algar) source static Rede_LJ036 Rede_LJ036 destination static DM_INLINE_NETWORK_1 DM_INLINE_NETWORK_1 no-proxy-arp route-lookup description NAT para funcionamento das VPNs Site to Site
+nat (inside,outside-algar) source dynamic Rede_LJ036 interface
+access-group inside_access_in_1 in interface inside
+access-group outside-intnet_access_in_1 in interface outside-algar
+router ospf 100
+ router-id 192.168.36.1
+ network 10.36.1.0 255.255.255.0 area 36
+ network 172.30.36.0 255.255.255.248 area 36
+ log-adj-changes
+!
+route outside-algar 0.0.0.0 0.0.0.0 189.112.215.58 1 track 1
+route outside-algar 8.8.8.8 255.255.255.255 189.112.215.58 1
+route outside-algar 10.200.0.0 255.255.0.0 189.112.215.58 160
+route outside-algar 10.206.0.0 255.255.0.0 189.112.215.58 160
+route outside-algar 172.17.0.0 255.255.0.0 189.112.215.58 160
+route outside-algar 172.20.1.0 255.255.255.0 189.112.215.58 160
+route outside-algar 172.22.0.0 255.255.0.0 189.112.215.58 160
+              route outside-algar 172.25.55.0 255.255.255.248 189.112.215.58 160
+route outside-algar 192.168.83.0 255.255.255.0 189.112.215.58 160
+route outside-algar 192.168.160.0 255.255.255.0 189.112.215.58 160
+timeout xlate 3:00:00
+timeout pat-xlate 0:00:30
+timeout conn 1:00:00 half-closed 0:10:00 udp 0:02:00 sctp 0:02:00 icmp 0:00:02
+timeout sunrpc 0:10:00 h323 0:05:00 h225 1:00:00 mgcp 0:05:00 mgcp-pat 0:05:00
+timeout sip 0:30:00 sip_media 0:02:00 sip-invite 0:03:00 sip-disconnect 0:02:00
+timeout sip-provisional-media 0:02:00 uauth 0:05:00 absolute
+timeout tcp-proxy-reassembly 0:01:00
+timeout floating-conn 0:00:00
+timeout conn-holddown 0:00:15
+timeout igp stale-route 0:01:10
+aaa-server TACACS-NEREIDAS protocol tacacs+
+ accounting-mode simultaneous
+ reactivation-mode depletion deadtime 1
+ max-failed-attempts 2
+user-identity default-domain LOCAL
+aaa authentication enable console LOCAL 
+aaa authentication http console LOCAL 
+aaa authentication ssh console LOCAL 
+aaa authorization exec authentication-server 
+aaa authentication login-history
+http server enable
+              http 192.168.1.0 255.255.255.0 Management
+http 0.0.0.0 0.0.0.0 inside
+http 0.0.0.0 0.0.0.0 Management
+http 0.0.0.0 0.0.0.0 outside-algar
+snmp-server host inside 172.22.22.207 community ***** version 2c
+snmp-server host inside 172.22.22.208 community ***** version 2c
+snmp-server host outside-algar 172.22.22.207 community ***** version 2c
+snmp-server host outside-algar 172.22.22.208 community ***** version 2c
+snmp-server host outside-algar 200.149.45.114 community ***** version 2c
+snmp-server host outside-algar 201.57.9.66 community ***** version 2c
+snmp-server host outside-algar 10.206.0.121 community ***** version 2c
+snmp-server host outside-algar 200.201.204.2 community ***** version 2c
+no snmp-server location
+no snmp-server contact
+sysopt noproxyarp inside
+sysopt noproxyarp Management
+sla monitor 1
+ type echo protocol ipIcmpEcho 8.8.8.8 interface outside-algar
+sla monitor schedule 1 life forever start-time now
+service sw-reset-button
+crypto ipsec ikev1 transform-set ESP-AES-128-SHA esp-aes esp-sha-hmac 
+crypto ipsec ikev1 transform-set ESP-AES-128-MD5 esp-aes esp-md5-hmac 
+crypto ipsec ikev1 transform-set ESP-AES-192-SHA esp-aes-192 esp-sha-hmac 
+crypto ipsec ikev1 transform-set ESP-AES-192-MD5 esp-aes-192 esp-md5-hmac 
+              crypto ipsec ikev1 transform-set ESP-AES-256-SHA esp-aes-256 esp-sha-hmac 
+crypto ipsec ikev1 transform-set ESP-AES-256-MD5 esp-aes-256 esp-md5-hmac 
+crypto ipsec ikev1 transform-set ESP-AES-128-SHA-TRANS esp-aes esp-sha-hmac 
+crypto ipsec ikev1 transform-set ESP-AES-128-SHA-TRANS mode transport
+crypto ipsec ikev1 transform-set ESP-AES-128-MD5-TRANS esp-aes esp-md5-hmac 
+crypto ipsec ikev1 transform-set ESP-AES-128-MD5-TRANS mode transport
+crypto ipsec ikev1 transform-set ESP-AES-192-SHA-TRANS esp-aes-192 esp-sha-hmac 
+crypto ipsec ikev1 transform-set ESP-AES-192-SHA-TRANS mode transport
+crypto ipsec ikev1 transform-set ESP-AES-192-MD5-TRANS esp-aes-192 esp-md5-hmac 
+crypto ipsec ikev1 transform-set ESP-AES-192-MD5-TRANS mode transport
+crypto ipsec ikev1 transform-set ESP-AES-256-SHA-TRANS esp-aes-256 esp-sha-hmac 
+crypto ipsec ikev1 transform-set ESP-AES-256-SHA-TRANS mode transport
+crypto ipsec ikev1 transform-set ESP-AES-256-MD5-TRANS esp-aes-256 esp-md5-hmac 
+crypto ipsec ikev1 transform-set ESP-AES-256-MD5-TRANS mode transport
+crypto ipsec ikev1 transform-set ESP-3DES-SHA esp-3des esp-sha-hmac 
+crypto ipsec ikev1 transform-set ESP-3DES-MD5 esp-3des esp-md5-hmac 
+crypto ipsec ikev1 transform-set ESP-3DES-SHA-TRANS esp-3des esp-sha-hmac 
+crypto ipsec ikev1 transform-set ESP-3DES-SHA-TRANS mode transport
+crypto ipsec ikev1 transform-set ESP-3DES-MD5-TRANS esp-3des esp-md5-hmac 
+crypto ipsec ikev1 transform-set ESP-3DES-MD5-TRANS mode transport
+crypto ipsec ikev1 transform-set ESP-DES-SHA esp-des esp-sha-hmac 
+crypto ipsec ikev1 transform-set ESP-DES-MD5 esp-des esp-md5-hmac 
+crypto ipsec ikev1 transform-set ESP-DES-SHA-TRANS esp-des esp-sha-hmac 
+crypto ipsec ikev1 transform-set ESP-DES-SHA-TRANS mode transport
+              crypto ipsec ikev1 transform-set ESP-DES-MD5-TRANS esp-des esp-md5-hmac 
+crypto ipsec ikev1 transform-set ESP-DES-MD5-TRANS mode transport
+crypto ipsec ikev2 ipsec-proposal DES
+ protocol esp encryption des
+ protocol esp integrity sha-1 md5
+crypto ipsec ikev2 ipsec-proposal 3DES
+ protocol esp encryption 3des
+ protocol esp integrity sha-1 md5
+crypto ipsec ikev2 ipsec-proposal AES
+ protocol esp encryption aes
+ protocol esp integrity sha-1 md5
+crypto ipsec ikev2 ipsec-proposal AES192
+ protocol esp encryption aes-192
+ protocol esp integrity sha-1 md5
+crypto ipsec ikev2 ipsec-proposal AES256
+ protocol esp encryption aes-256
+ protocol esp integrity sha-1 md5
+crypto ipsec security-association pmtu-aging infinite
+crypto map outside-intnet_map 1 match address outside-intnet_cryptomap
+crypto map outside-intnet_map 1 set pfs group5
+crypto map outside-intnet_map 1 set peer 200.149.45.114 201.57.9.66 
+crypto map outside-intnet_map 1 set ikev1 transform-set ESP-AES-128-SHA ESP-AES-128-MD5 ESP-AES-192-SHA ESP-AES-192-MD5 ESP-AES-256-SHA ESP-AES-256-MD5 ESP-3DES-SHA ESP-3DES-MD5 ESP-DES-SHA ESP-DES-MD5
+crypto map outside-intnet_map 1 set ikev2 ipsec-proposal AES256 AES192 AES 3DES DES
+crypto map outside-intnet_map 1 set nat-t-disable
+              crypto map outside-intnet_map 2 match address outside-intnet_cryptomap_1
+crypto map outside-intnet_map 2 set pfs group5
+crypto map outside-intnet_map 2 set peer 200.201.204.2 
+crypto map outside-intnet_map 2 set ikev1 transform-set ESP-AES-128-SHA ESP-AES-128-MD5 ESP-AES-192-SHA ESP-AES-192-MD5 ESP-AES-256-SHA ESP-AES-256-MD5 ESP-3DES-SHA ESP-3DES-MD5 ESP-DES-SHA ESP-DES-MD5
+crypto map outside-intnet_map 2 set ikev2 ipsec-proposal DES 3DES AES AES192 AES256
+crypto map outside-intnet_map interface outside-algar
+crypto ca trustpool policy
+crypto ikev2 policy 1
+ encryption aes-256
+ integrity sha
+ group 5 2
+ prf sha
+ lifetime seconds 86400
+crypto ikev2 policy 10
+ encryption aes-192
+ integrity sha
+ group 5 2
+ prf sha
+ lifetime seconds 86400
+crypto ikev2 policy 20
+ encryption aes
+ integrity sha
+ group 5 2
+ prf sha
+               lifetime seconds 86400
+crypto ikev2 policy 30
+ encryption 3des
+ integrity sha
+ group 5 2
+ prf sha
+ lifetime seconds 86400
+crypto ikev2 policy 40
+ encryption des
+ integrity sha
+ group 5 2
+ prf sha
+ lifetime seconds 86400
+crypto ikev2 enable outside-algar
+crypto ikev1 enable outside-algar
+crypto ikev1 policy 5
+ authentication pre-share
+ encryption aes
+ hash sha
+ group 2
+ lifetime 28800
+crypto ikev1 policy 6
+ authentication pre-share
+ encryption 3des
+               hash sha
+ group 2
+ lifetime 28800
+crypto ikev1 policy 7
+ authentication pre-share
+ encryption 3des
+ hash sha
+ group 2
+ lifetime 50400
+crypto ikev1 policy 20
+ authentication rsa-sig
+ encryption aes-256
+ hash sha
+ group 2
+ lifetime 86400
+crypto ikev1 policy 30
+ authentication pre-share
+ encryption aes-256
+ hash sha
+ group 2
+ lifetime 86400
+crypto ikev1 policy 50
+ authentication rsa-sig
+ encryption aes-192
+               hash sha
+ group 2
+ lifetime 86400
+crypto ikev1 policy 60
+ authentication pre-share
+ encryption aes-192
+ hash sha
+ group 2
+ lifetime 86400
+crypto ikev1 policy 80
+ authentication rsa-sig
+ encryption aes
+ hash sha
+ group 2
+ lifetime 86400
+crypto ikev1 policy 90
+ authentication pre-share
+ encryption aes
+ hash sha
+ group 2
+ lifetime 86400
+crypto ikev1 policy 110
+ authentication rsa-sig
+ encryption 3des
+               hash sha
+ group 2
+ lifetime 86400
+crypto ikev1 policy 120
+ authentication pre-share
+ encryption 3des
+ hash sha
+ group 2
+ lifetime 86400
+crypto ikev1 policy 140
+ authentication rsa-sig
+ encryption des
+ hash sha
+ group 2
+ lifetime 86400
+crypto ikev1 policy 150
+ authentication pre-share
+ encryption des
+ hash sha
+ group 2
+ lifetime 86400
+!
+track 1 rtr 1 reachability
+!
+              track 23 rtr 23 reachability
+!
+track 24 rtr 24 reachability
+!
+track 25 rtr 25 reachability
+!
+track 31 rtr 31 reachability
+!
+track 41 rtr 41 reachability
+!
+track 42 rtr 42 reachability
+!
+track 43 rtr 43 reachability
+!
+track 44 rtr 44 reachability
+!
+track 45 rtr 45 reachability
+!
+track 100 rtr 100 reachability
+telnet timeout 5
+no ssh stricthostkeycheck
+ssh 0.0.0.0 0.0.0.0 inside
+ssh 0.0.0.0 0.0.0.0 outside-algar
+ssh 192.168.1.0 255.255.255.0 Management
+              ssh 0.0.0.0 0.0.0.0 mpls
+ssh timeout 5
+ssh version 2
+ssh key-exchange group dh-group14-sha1
+console timeout 0
+
+dhcprelay enable inside
+dhcprelay timeout 60
+dhcprelay information trust-all
+threat-detection basic-threat
+threat-detection statistics host
+threat-detection statistics access-list
+no threat-detection statistics tcp-intercept
+ntp server 172.22.22.20
+ntp server 200.160.7.186 prefer
+ssl cipher default low
+ssl cipher tlsv1 low
+ssl cipher tlsv1.1 low
+ssl cipher tlsv1.2 low
+ssl cipher dtlsv1 low
+group-policy GroupPolicy_200.149.45.114 internal
+group-policy GroupPolicy_200.149.45.114 attributes
+ vpn-tunnel-protocol ikev1 ikev2 
+group-policy GroupPolicy_200.201.204.2 internal
+              group-policy GroupPolicy_200.201.204.2 attributes
+ vpn-tunnel-protocol ikev1 ikev2 
+group-policy "VPN_CSC _GPolicy" internal
+dynamic-access-policy-record DfltAccessPolicy
+username gustavo.santos password ***** encrypted privilege 15
+username rafael.rangel password ***** encrypted privilege 15
+username danilo.marques password ***** encrypted privilege 15
+username jonatas.marques password ***** encrypted privilege 15
+username ricardo.barros password ***** pbkdf2 privilege 15
+username jatrocades password ***** pbkdf2 privilege 15
+username mariana.ferreira password ***** pbkdf2 privilege 15
+username dione.chaves password ***** pbkdf2 privilege 15
+username vinicius.polato password ***** encrypted privilege 15
+username cleydson.santos password ***** pbkdf2 privilege 15
+tunnel-group 200.149.45.114 type ipsec-l2l
+tunnel-group 200.149.45.114 general-attributes
+ default-group-policy GroupPolicy_200.149.45.114
+tunnel-group 200.149.45.114 ipsec-attributes
+ ikev1 pre-shared-key *****
+ ikev2 remote-authentication pre-shared-key *****
+ ikev2 local-authentication pre-shared-key *****
+tunnel-group 201.57.9.66 type ipsec-l2l
+tunnel-group 201.57.9.66 general-attributes
+ default-group-policy GroupPolicy_200.149.45.114
+              tunnel-group 201.57.9.66 ipsec-attributes
+ ikev1 pre-shared-key *****
+ ikev2 remote-authentication pre-shared-key *****
+ ikev2 local-authentication pre-shared-key *****
+tunnel-group 200.201.204.2 type ipsec-l2l
+tunnel-group 200.201.204.2 general-attributes
+ default-group-policy GroupPolicy_200.201.204.2
+tunnel-group 200.201.204.2 ipsec-attributes
+ ikev1 pre-shared-key *****
+ ikev2 remote-authentication pre-shared-key *****
+ ikev2 local-authentication pre-shared-key *****
+!
+class-map cmap-G4S
+ match access-list mpls_oi_mpc
+class-map inspection_default
+ match default-inspection-traffic
+class-map cmap-Loja_para_Sede_sem_limitacao
+ description Trafego para Sede sem limitacao de banda.
+ match access-list mpls_ebt_mpc
+class-map acl-netflow
+ match access-list global_mpc_1
+class-map cmap-CFTV
+ match access-list mpls_mpc
+class-map cmap-Loja_para_Sede_com_limitacao
+               description Trafego para Sede com limitacao de banda.
+ match access-list mpls_ebt_mpc_1
+class-map cmap-Limita_File_SRV
+ description Limitacao_file_server_80k
+ match access-list mpls_ebt_mpc_2
+class-map cmap-PROXY
+ match access-list acl-CB_PROXY
+!
+!
+policy-map type inspect dns preset_dns_map
+ parameters
+  message-length maximum client auto
+  message-length maximum 512
+  no tcp-inspection
+policy-map global_policy
+ class inspection_default
+  inspect dns preset_dns_map 
+  inspect ftp 
+  inspect h323 h225 
+  inspect h323 ras 
+  inspect rsh 
+  inspect rtsp 
+  inspect esmtp 
+  inspect sqlnet 
+                inspect skinny  
+  inspect sunrpc 
+  inspect xdmcp 
+  inspect sip  
+  inspect netbios 
+  inspect tftp 
+  inspect ip-options 
+ class acl-netflow
+policy-map global-policy
+ class class-default
+  user-statistics accounting
+policy-map type inspect dns migrated_dns_map_2
+ parameters
+  message-length maximum client auto
+  message-length maximum 512
+  no tcp-inspection
+policy-map type inspect dns migrated_dns_map_1
+ parameters
+  message-length maximum client auto
+  message-length maximum 512
+  no tcp-inspection
+policy-map pmap-CONTROLE_BANDA
+ class cmap-CFTV
+  police input 256000 1500
+                police output 256000 1500
+!
+service-policy global_policy global
+prompt hostname context 
+no call-home reporting anonymous
+call-home
+ profile CiscoTAC-1
+  no active
+  destination address http https://tools.cisco.com/its/service/oddce/services/DDCEService
+  destination address email callhome@cisco.com
+  destination transport-method http
+  subscribe-to-alert-group diagnostic
+  subscribe-to-alert-group environment
+  subscribe-to-alert-group inventory periodic monthly
+  subscribe-to-alert-group configuration periodic monthly
+  subscribe-to-alert-group telemetry periodic daily
+event manager applet daily-config-backup
+ event timer absolute time 1:00:00
+ action 0 cli command "backup /noconfirm location ftp://backup:lr6sLAEO@10.254.100.100/Leader/Firewall/"
+ output none
+Cryptochecksum:92fd1f3cf416dd8a1f6dcfa879c79053
+: end
+ASA-LJ-036#                     
+ASA-LJ-036# 
+ASA-LJ-036# 
+ASA-LJ-036# 
+ASA-LJ-036# 
+ASA-LJ-036# 
+ASA-LJ-036# quit
+
+Logoff
+

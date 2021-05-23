@@ -1,0 +1,24 @@
+
+#############  ROTEADORES EBT E OI ####################
+!
+conf t
+ip prefix-list PERMITE_BGP seq 20 permit 10.254.0.0/16
+ip prefix-list PERMITE_BGP seq 21 permit 172.31.200.0/24
+!
+end
+wr
+
+
+############  FIREWALL ############
+
+
+object network Rede_Nereidas
+ subnet 10.254.0.0 255.255.0.0
+object network Rede_Nereidas_2
+ subnet 172.31.200.0 255.255.255.0
+!
+object-group network Redes_Leader
+ network-object object Rede_Nereidas
+ network-object object Rede_Nereidas_2
+!
+

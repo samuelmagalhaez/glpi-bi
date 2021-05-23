@@ -1,0 +1,2 @@
+2021-03-30 17:17:40 [72@glpi]
+Atenção: um e-mail não foi entregue para cleydson.candido@nereidas.com.br com mais 5 tentativas restantes.. Mensagem: [GLPI #0001843] Novo usuário em atribuídos Loja 323. Link MPLS OI indisponível no monitoramento., Erro: SMTP connect() failed. https://github.com/PHPMailer/PHPMailer/wiki/Troubleshooting

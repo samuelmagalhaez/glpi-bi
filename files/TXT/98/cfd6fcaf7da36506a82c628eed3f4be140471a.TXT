@@ -1,0 +1,592 @@
+Current configuration : 15260 bytes
+!
+! Last configuration change at 16:36:14 RJO Thu Feb 18 2021 by tr0312
+! NVRAM config last updated at 16:39:11 RJO Thu Feb 18 2021 by tr0312
+!
+version 12.2
+no service pad
+service timestamps debug uptime
+service timestamps log datetime localtime
+service password-encryption
+!
+hostname SW_LJ241_01_RJ_5
+!
+boot-start-marker
+boot-end-marker
+!
+logging buffered warnings
+logging console warnings
+enable secret 5 $1$UYg4$pRdLqqA78wugt2EnoPO1a/
+!
+username administrator privilege 15 password 7 123A4321225F1F173D7B362C721561
+aaa new-model
+!
+!
+aaa group server tacacs+ ACS-TACACS
+ server 172.21.1.51
+!
+aaa authentication login default group tacacs+ local
+aaa authorization exec default group tacacs+ local
+aaa accounting exec default start-stop group tacacs+
+aaa accounting commands 15 default start-stop group tacacs+
+!
+!
+!
+aaa session-id common
+clock timezone RJO -3
+clock summer-time GMT-2 date Oct 18 2015 0:00 Feb 21 2016 0:00
+system mtu routing 1500
+vtp mode transparent
+ip subnet-zero
+!
+!
+ip domain-list casaevideo.com.br
+no ip domain-lookup
+ip domain-name casaevideo.com.br
+ip name-server 172.20.0.185
+ip name-server 172.22.5.101
+!
+!
+crypto pki trustpoint TP-self-signed-363096064
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-363096064
+ revocation-check none
+ rsakeypair TP-self-signed-363096064
+!
+!
+crypto pki certificate chain TP-self-signed-363096064
+ certificate self-signed 01
+  3082025A 308201C3 A0030201 02020101 300D0609 2A864886 F70D0101 04050030
+  30312E30 2C060355 04031325 494F532D 53656C66 2D536967 6E65642D 43657274
+  69666963 6174652D 33363330 39363036 34301E17 0D393330 33303130 30303334
+  315A170D 32303031 30313030 30303030 5A303031 2E302C06 03550403 1325494F
+  532D5365 6C662D53 69676E65 642D4365 72746966 69636174 652D3336 33303936
+  30363430 819F300D 06092A86 4886F70D 01010105 0003818D 00308189 02818100
+  D059C5A2 747E040E 06F029DE 0B0BCDA9 75AADA93 F7695BC9 6AF7B37A 8EF6B14C
+  97FE4A12 C48286B7 F3D58955 6B15AA80 393C1C0B DD7BDD3A AF451679 D2B209B8
+  27E4BCCA A5D032BA 7911501C FB4D6B4E A738A91F 21EA1BA1 B7515073 652BD00E
+  2800E642 6E27FA90 22FA35B8 02525E31 52F11557 89857276 945B56BC 36195DF1
+  02030100 01A38183 30818030 0F060355 1D130101 FF040530 030101FF 302D0603
+  551D1104 26302482 2253575F 4C4A3234 315F3031 5F524A5F 352E6361 73616576
+  6964656F 2E636F6D 2E627230 1F060355 1D230418 30168014 81D0613C 5FFE6447
+  93EEC108 E2E62380 8DE471C3 301D0603 551D0E04 16041481 D0613C5F FE644793
+  EEC108E2 E623808D E471C330 0D06092A 864886F7 0D010104 05000381 81008867
+  ED12E55F CA14A770 1B9D9ED4 0B81B890 D6D2A42F 3EF815CD 1188BCA7 AC02AAF1
+  196DC34E 84EDE6CA D078A69B 1D1D7FF0 EC9E63A2 E1C7283D E1CAC0C2 FED2A748
+  8228DE01 0D3BF869 CFBAF3D2 D84BBCB8 414854E1 FA2A9ED7 447B57BB A68A2FC6
+  4C8B8FB4 C9299B5C D15A2909 909A035A 88F2B1B6 C218EC9D A7A020E3 BD8B
+  quit
+!
+!
+!
+!
+!
+memory reserve critical 1000
+!
+spanning-tree mode rapid-pvst
+spanning-tree portfast bpduguard default
+no spanning-tree optimize bpdu transmission
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+vlan 10
+ name GERENCIA
+!
+vlan 11
+ name PDV
+!
+vlan 12
+ name LOJA-ESTACOES
+!
+vlan 13
+ name ASSOCIADOS
+!
+vlan 14
+ name PORTABLE
+!
+vlan 15
+ name DEMONSTRACAO
+!
+!
+interface FastEthernet0/1
+ description Servidor
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ shutdown
+ storm-control broadcast level 10.00
+ storm-control multicast level 25.00
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/2
+ description PDV
+ switchport access vlan 11
+ switchport mode access
+ switchport nonegotiate
+ spanning-tree portfast
+!
+interface FastEthernet0/3
+ description PDV
+ switchport access vlan 11
+ switchport mode access
+ switchport nonegotiate
+ spanning-tree portfast
+!
+interface FastEthernet0/4
+ description antigo 58 - novo 18
+ switchport access vlan 11
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ storm-control broadcast level 10.00
+ storm-control multicast level 25.00
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/5
+ description PDV
+ switchport access vlan 11
+ switchport mode access
+ switchport nonegotiate
+ spanning-tree portfast
+!
+interface FastEthernet0/6
+ description PDV
+ switchport access vlan 11
+ switchport mode access
+ switchport nonegotiate
+ spanning-tree portfast
+!
+interface FastEthernet0/7
+ description PDV
+ switchport access vlan 11
+ switchport mode access
+ switchport nonegotiate
+ spanning-tree portfast
+!
+interface FastEthernet0/8
+ description PDV
+ switchport access vlan 11
+ switchport mode access
+ switchport nonegotiate
+ spanning-tree portfast
+!
+interface FastEthernet0/9
+ description antigo 5 - novo 20
+ switchport access vlan 11
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ storm-control broadcast level 10.00
+ storm-control multicast level 25.00
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/10
+ description PDV
+ switchport access vlan 11
+ switchport mode access
+ switchport nonegotiate
+ spanning-tree portfast
+!
+interface FastEthernet0/11
+ description PDV
+ switchport access vlan 11
+ switchport mode access
+ switchport nonegotiate
+ spanning-tree portfast
+!
+interface FastEthernet0/12
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ storm-control broadcast level 10.00
+ storm-control multicast level 25.00
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/13
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ storm-control broadcast level 10.00
+ storm-control multicast level 25.00
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/14
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ storm-control broadcast level 10.00
+ storm-control multicast level 25.00
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/15
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ storm-control broadcast level 10.00
+ storm-control multicast level 25.00
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/16
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ storm-control broadcast level 10.00
+ storm-control multicast level 25.00
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/17
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ storm-control broadcast level 10.00
+ storm-control multicast level 25.00
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/18
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ storm-control broadcast level 10.00
+ storm-control multicast level 25.00
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/19
+ switchport access vlan 12
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ storm-control broadcast level 10.00
+ storm-control multicast level 25.00
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/20
+ description Gerencia 3
+ switchport access vlan 12
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ storm-control broadcast level 10.00
+ storm-control multicast level 25.00
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/21
+ description Impressora 15
+ switchport access vlan 12
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ storm-control broadcast level 10.00
+ storm-control multicast level 25.00
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/22
+ description PDV
+ switchport access vlan 11
+ switchport mode access
+ switchport nonegotiate
+ spanning-tree portfast
+!
+interface FastEthernet0/23
+ description RETAGUARDA
+ switchport access vlan 12
+ switchport mode access
+ switchport nonegotiate
+ spanning-tree portfast
+!
+interface FastEthernet0/24
+ description Impressora 85
+ switchport access vlan 12
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ storm-control broadcast level 10.00
+ storm-control multicast level 25.00
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/25
+ description antigo 19 - novo 59
+ switchport access vlan 11
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ storm-control broadcast level 10.00
+ storm-control multicast level 25.00
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/26
+ description Gerencia 1
+ switchport access vlan 13
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ storm-control broadcast level 10.00
+ storm-control multicast level 25.00
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/27
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ storm-control broadcast level 10.00
+ storm-control multicast level 25.00
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/28
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ storm-control broadcast level 10.00
+ storm-control multicast level 25.00
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/29
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ storm-control broadcast level 10.00
+ storm-control multicast level 25.00
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/30
+ description PDV
+ switchport access vlan 11
+ switchport mode access
+ switchport nonegotiate
+ spanning-tree portfast
+!
+interface FastEthernet0/31
+ switchport access vlan 11
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ storm-control broadcast level 10.00
+ storm-control multicast level 25.00
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/32
+ description MataBurro
+ switchport access vlan 12
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ storm-control broadcast level 10.00
+ storm-control multicast level 25.00
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/33
+ switchport access vlan 12
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ storm-control broadcast level 10.00
+ storm-control multicast level 25.00
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/34
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ storm-control broadcast level 10.00
+ storm-control multicast level 25.00
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/35
+ description DVR 10.22.41.150
+ switchport access vlan 12
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ storm-control broadcast level 10.00
+ storm-control multicast level 25.00
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/36
+ description Impressora Connect
+ switchport access vlan 12
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ storm-control broadcast level 10.00
+ storm-control multicast level 25.00
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/37
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ shutdown
+ storm-control broadcast level 10.00
+ storm-control multicast level 25.00
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/38
+ switchport access vlan 12
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ storm-control broadcast level 10.00
+ storm-control multicast level 25.00
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/39
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ storm-control broadcast level 10.00
+ storm-control multicast level 25.00
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/40
+ description AP_241_01
+ switchport trunk native vlan 10
+ switchport mode trunk
+ spanning-tree portfast
+!
+interface FastEthernet0/41
+ description ATEC 1
+ switchport access vlan 12
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ storm-control broadcast level 10.00
+ storm-control multicast level 25.00
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/42
+ description AP_241_02
+ switchport trunk native vlan 10
+ switchport mode trunk
+ spanning-tree portfast
+!
+interface FastEthernet0/43
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ storm-control broadcast level 10.00
+ storm-control multicast level 25.00
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/44
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ shutdown
+ storm-control broadcast level 10.00
+ spanning-tree portfast
+!
+interface FastEthernet0/45
+ description ATEC 2
+ switchport access vlan 12
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ storm-control broadcast level 10.00
+ storm-control multicast level 25.00
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/46
+ description PDV
+ switchport access vlan 11
+ switchport mode access
+ switchport nonegotiate
+ spanning-tree portfast
+!
+interface FastEthernet0/47
+ description IMPRESSORA CARTAO
+ switchport access vlan 12
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ storm-control broadcast level 10.00
+ storm-control multicast level 25.00
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/48
+ description RETAGUARDA CARTAO
+ switchport access vlan 12
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ storm-control broadcast level 10.00
+ storm-control multicast level 25.00
+ storm-control action trap
+ spanning-tree portfast
+!
+interface GigabitEthernet0/1
+ description link OI
+ switchport mode trunk
+ spanning-tree portfast
+!
+interface GigabitEthernet0/2
+ description link WCS
+ switchport mode trunk
+ spanning-tree portfast
+!
+interface Vlan1
+ ip address 172.16.41.32 255.255.255.0
+ no ip route-cache
+!
+interface Vlan10
+ description GERENCIA
+ ip address 10.2.41.5 255.255.255.0
+ no ip route-cache
+!
+ip default-gateway 10.2.41.1
+no ip http server
+no ip http secure-server
+logging trap warnings
+snmp-server community casaevideo RO
+snmp-server community col@adm! RO
+snmp-server community col@lms!r RO
+snmp-server community col@lms!w RW
+snmp-server community Nereidas@CeV# RO
+snmp-server host 172.21.2.47 version 2c Nereidas@CeV#
+tacacs-server host 172.21.1.51 key 7 023224782B053C2A1F77
+tacacs-server directed-request
+!
+control-plane
+!
+!
+line con 0
+line vty 0 4
+ password 7 0831424D0D184F181F0D09426C
+line vty 5 15
+ password 7 051B080C254D0406140312544D
+!
+ntp clock-period 36029592
+ntp server 172.21.10.1 prefer
+ntp server 10.200.100.234
+end
